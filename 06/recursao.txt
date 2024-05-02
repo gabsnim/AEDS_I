@@ -1,0 +1,11 @@
+recursao
+bloco de comando = (contar de 1 até 5) = 1 2 3 4 5
+para isso, usamos o motor da recursao antes do bloco de comandos.
+isso se chama recursividade de cabeca
+
+-----------------------------------------------------------------
+
+bloco de comando = (contar de 5 até 1) = 5 4 3 2 1    
+recursao 
+para isso, usamos o motor da recursao depois do bloco de comandos.
+isso se chama recursividade de cauda

@@ -1,1 +1,0 @@
-printf("%lf %d ", soma, y)

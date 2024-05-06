@@ -51,13 +51,111 @@ void free_int_Array (ref_int_Array tmpArray)
   free(tmpArray);
 }
 
+void printintArray (int_Array array)
+{
+  if(array.data) //existir
+  {
+    for(array.ix = 0; array.ix < array.length; array.ix = array.ix + 1)
+    {
+      printf("%2d: %d\n", array.ix, array.data [ array.ix ]);
+    }
+  }
+}
+
+int_Array readArrayfromfile (chars Filename)
+{
+  FILE* arquivo = fopen (Filename, "rt");
+  int_Array array; //"inicializar objeto"
+  array.ix = 0;
+  int y = 0;
+
+  if(arquivo) //!= null
+  {
+    fscanf(arquivo, "%d", &array.length);
+    
+    if(array.length <= 0)
+    {
+      array.length = 0;
+      printf("ERRO: Valor invalido.");
+    }
+    else
+    {
+      array.data = (int*)malloc(array.length * sizeof(int));
+
+      if(array.data)
+      {
+        while(!feof(arquivo) && array.ix < array.length)
+        {
+          fscanf(arquivo, "%d", &array.data[array.ix]);
+          array.ix++;
+        }
+      }
+    }
+  }
+  return ( array );
+}
+
+int ArraySearch (int n, int_Array array)
+{
+  int position = 0;
+  // printf("aqui.");
+  // printintArray(array);
+
+  for(array.ix = 0; array.ix < array.length; array.ix++)
+  {
+    if(n == array.data[array.ix])
+    {
+      position = array.ix;
+    }
+  }
+  return (position);
+}
 void method_01(void) 
 {
+  int_Array array; //como se estivesse inicializando um objeto
+  int n = G_readint("Digite o tamanho do array: ");
+  array.length = n;
+  array.ix = 0;
+  
+  int a = G_readint("Digite o valor inferior do intervalo: ");
+  int b = G_readint("Digite o valor superior do intervalo: ");
+  int x = 0;
 
+  array.data = (int*)malloc(array.length * sizeof(int));
+
+  if(array.data) //!= null 
+  {
+    while (array.ix < array.length)
+    {
+      x = rand() % 100;
+      if(x >= a && x <= b)
+      {
+        printf("x = %d\n", x);
+        array.data[array.ix] = x;
+        array.ix++;
+      }
+    }
+  }
+
+  printintArray(array);
+
+  if(array.data)
+  {
+    free(array.data);
+  }
 }
 void method_02(void) 
 {
+  int_Array array;
+  array = readArrayfromfile("DADOS.TXT");
+  int result = 0;
 
+  if(array.data)
+  {
+    printintArray(array);
+    result = ArraySearch(10, array);
+    printf("%d", result);
+  }
 }
 void method_03(void)
 {

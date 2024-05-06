@@ -5,6 +5,52 @@ Matricula: 805347
 
 #include "gxb.h"
 
+typedef
+struct S_array_01
+{
+  int length; // tamanho do arranjo;
+  int* data;  //   dados do arranjo;
+  int ix ;    // lugares do arranjo;
+} int_Array;
+
+typedef int_Array* ref_int_Array; //int_Array* == ref_int_Array ou seja, onde estao os dados 
+
+ref_int_Array new_int_Array (int n) //reservar espaco para array
+{
+  ref_int_Array tmpArray = (ref_int_Array)malloc(sizeof(int_Array));
+  // int_Array* tmpArray = (int_Array*)malloc(n * sizeof(int_Array));
+  if(tmpArray == NULL)
+  {
+    printf("ERRO ao alocar memoria.\n");
+  }
+  else
+  {
+    tmpArray->length = 0;
+    tmpArray->data = NULL;
+    tmpArray->ix = -1;
+
+    if(n > 0) //dados maiores que 0, reservar espaco
+    {
+      //guardar quantidade de dados 
+      tmpArray->length = n;
+      //reservar espacos para os dados
+      tmpArray->data = (int*)malloc(n * sizeof(int));
+      //definir indicador para o primeiro elemento
+      tmpArray->ix = 0;
+    }
+  }
+  return ( tmpArray );
+}
+
+void free_int_Array (ref_int_Array tmpArray)
+{
+  if(tmpArray != NULL)
+  {
+    free(tmpArray->data);
+  }
+  free(tmpArray);
+}
+
 void method_01(void) 
 {
 

@@ -463,3 +463,33 @@ void G_readMatrix (int rows, int columns, int matrix[][columns])
     }
   }
 }
+
+void G_readdoubleNegativeMatrix (int rows, int columns, double matrix[][columns]) // negative;
+{
+  double x = 0.0;
+
+  for(int i = 0; i < rows; i++)
+  {
+    for(int j = 0; j < columns; j++)
+    {
+      do
+      {
+        printf("linha %d coluna %d = ", i, j);
+        x = G_readdouble("");
+      } while (x > 0);
+      matrix[i][j] = x;
+    }
+  }
+}
+
+void G_printdoubleMatrix (int rows, int columns, double matrix[][columns])
+{
+  for(int i = 0; i < rows; i++)
+  {
+    for(int j = 0; j < columns  ; j++)
+    {
+      printf("%.2lf ", matrix[i][j]);
+    }
+    printf("\n");
+  }
+}

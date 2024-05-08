@@ -5,6 +5,7 @@ Matricula: 805347
 
 #include "gxb.h"
 
+
 typedef
 struct S_array_01
 {
@@ -19,14 +20,14 @@ ref_int_Array new_int_Array (int n) //reservar espaco para array
 {
   ref_int_Array tmpArray = (ref_int_Array)malloc(sizeof(int_Array));
   // int_Array* tmpArray = (int_Array*)malloc(n * sizeof(int_Array));
-  if(tmpArray == NULL)
+  if(tmpArray == null)
   {
     printf("ERRO ao alocar memoria.\n");
   }
   else
   {
     tmpArray->length = 0;
-    tmpArray->data = NULL;
+    tmpArray->data = null;
     tmpArray->ix = -1;
 
     if(n > 0) //dados maiores que 0, reservar espaco
@@ -44,7 +45,7 @@ ref_int_Array new_int_Array (int n) //reservar espaco para array
 
 void free_int_Array (ref_int_Array tmpArray)
 {
-  if(tmpArray != NULL)
+  if(tmpArray != null)
   {
     free(tmpArray->data);
   }
@@ -68,6 +69,7 @@ int_Array readArrayfromfile (chars Filename)
   int_Array array; //"inicializar objeto"
   array.ix = 0;
   int y = 0;
+  int x = 0;
 
   if(arquivo) //!= null
   {
@@ -110,6 +112,41 @@ int ArraySearch (int n, int_Array array)
   }
   return (position);
 }
+
+bool arrayCompare (int_Array array1, int_Array array2)
+{
+  bool result = true;
+  int count = 0;
+  // printintArray(array1);
+  // printintArray(array2);
+  for(array1.ix = 0; array1.ix < array1.length; array1.ix++)
+  {
+    if(array1.data[array1.ix] != array2.data[array1.ix])
+    {
+      result = false;
+    }
+  }
+  return result;
+}
+
+int_Array arrayAdd (int_Array array1, int_Array array2, int_Array array3)
+{
+  // ref_int_Array array3;
+  array3.data = malloc(array1.length * sizeof(int));
+  // printf("lenght 3 = %d", array3.length);
+  if(array1.data && array2.data && array3.data)
+  {
+    array3.length = array1.length;
+    for(int i = 0; i < array1.length; i++)
+    {
+      array3.data[i] = array1.data[i] + array2.data[i];
+      // printf("%d\n", array3.data[i]);
+    }
+  }
+
+  return array3;
+}
+
 void method_01(void) 
 {
   int_Array array; //como se estivesse inicializando um objeto
@@ -156,14 +193,52 @@ void method_02(void)
     result = ArraySearch(10, array);
     printf("%d", result);
   }
+
+  if(array.data != null)
+  {
+    free (array.data);
+  }
 }
 void method_03(void)
 {
- 
+  int_Array array1;
+  int_Array array2;
+  array1 = readArrayfromfile("DADOS1.TXT");
+  array2 = readArrayfromfile("DADOS2.TXT");
+
+  printf("array1: \n");
+  printintArray(array1);
+  printf("array2: \n");
+  printintArray(array2);
+  if(array1.length == array2.length)
+  {
+    // printf("\nlenght1 = %d\n", array1.length);
+    // printf("\nlenght2 = %d\n", array2.length);
+    if(arrayCompare(array1, array2))
+    {
+      printf("Arrays iguais.\n");
+    }
+    else
+    {
+      printf("Arrays diferentes.\n");
+    }
+  }
 }
 void method_04(void) 
 {
+  int_Array array1;
+  int_Array array2;
+  int_Array array3;
+  array1 = readArrayfromfile("DADOS1.TXT");
+  array2 = readArrayfromfile("DADOS2.TXT");
 
+  array3 = arrayAdd (array1, array2, array3);
+  printf("1:\n");
+  printintArray(array1);
+  printf("2:\n");
+  printintArray(array2);
+  printf("3:\n");
+  printintArray(array3);
 }
 void method_05(void) 
 {

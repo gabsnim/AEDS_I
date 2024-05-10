@@ -7,7 +7,7 @@
 
 typedef char *chars;
 
-#define null NULL //ref null
+// #define null NULL //ref null
 
 /*
   Funcao para ler um inteiro

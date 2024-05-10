@@ -4,6 +4,7 @@ Matricula: 805347
 */
 
 #include "gxb.h"
+// #include "struct.h"
 
 
 typedef
@@ -42,6 +43,17 @@ ref_int_Array new_int_Array (int n) //reservar espaco para array
   }
   return ( tmpArray );
 }
+
+// int_Array init_Array (ref_int_Array array, int n)
+// {
+//   ref_int_Array init_Array = (ref_int_Array)malloc(array->length * sizeof(int));
+
+//   for(init_Array->ix = 0; init_Array->ix < init_Array->length; init_Array->ix++)
+//   {
+//     init_Array->data[init_Array->ix] = n;
+//   }
+//   return *init_Array;
+// }
 
 void free_int_Array (ref_int_Array tmpArray)
 {
@@ -102,14 +114,16 @@ int ArraySearch (int n, int_Array array)
   int position = 0;
   // printf("aqui.");
   // printintArray(array);
+  bool teste = false;
 
-  for(array.ix = 0; array.ix < array.length; array.ix++)
+  while (n == array.data[array.ix] && array.ix < array.length)
   {
-    if(n == array.data[array.ix])
+    if(array.ix < array.length)
     {
       position = array.ix;
     }
   }
+  
   return (position);
 }
 

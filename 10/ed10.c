@@ -1,286 +1,218 @@
+#include "gxb.h"
+#include "structArray.h"
+#include "structMatrix.h"
+
 /*
 Aluno: Gabriel Xavier Borges
 Matricula: 805347
 */
 
-#include "gxb.h"
-// #include "struct.h"
-
-
-typedef
-struct S_array_01
-{
-  int length; // tamanho do arranjo;
-  int* data;  //   dados do arranjo;
-  int ix ;    // lugares do arranjo;
-} int_Array;
-
-typedef int_Array* ref_int_Array; //int_Array* == ref_int_Array ou seja, onde estao os dados 
-
-ref_int_Array new_int_Array (int n) //reservar espaco para array
-{
-  ref_int_Array tmpArray = (ref_int_Array)malloc(sizeof(int_Array));
-  // int_Array* tmpArray = (int_Array*)malloc(n * sizeof(int_Array));
-  if(tmpArray == null)
-  {
-    printf("ERRO ao alocar memoria.\n");
-  }
-  else
-  {
-    tmpArray->length = 0;
-    tmpArray->data = null;
-    tmpArray->ix = -1;
-
-    if(n > 0) //dados maiores que 0, reservar espaco
-    {
-      //guardar quantidade de dados 
-      tmpArray->length = n;
-      //reservar espacos para os dados
-      tmpArray->data = (int*)malloc(n * sizeof(int));
-      //definir indicador para o primeiro elemento
-      tmpArray->ix = 0;
-    }
-  }
-  return ( tmpArray );
-}
-
-// int_Array init_Array (ref_int_Array array, int n)
-// {
-//   ref_int_Array init_Array = (ref_int_Array)malloc(array->length * sizeof(int));
-
-//   for(init_Array->ix = 0; init_Array->ix < init_Array->length; init_Array->ix++)
-//   {
-//     init_Array->data[init_Array->ix] = n;
-//   }
-//   return *init_Array;
-// }
-
-void free_int_Array (ref_int_Array tmpArray)
-{
-  if(tmpArray != null)
-  {
-    free(tmpArray->data);
-  }
-  free(tmpArray);
-}
-
-void printintArray (int_Array array)
-{
-  if(array.data) //existir
-  {
-    for(array.ix = 0; array.ix < array.length; array.ix = array.ix + 1)
-    {
-      printf("%2d: %d\n", array.ix, array.data [ array.ix ]);
-    }
-  }
-}
-
-int_Array readArrayfromfile (chars Filename)
-{
-  FILE* arquivo = fopen (Filename, "rt");
-  int_Array array; //"inicializar objeto"
-  array.ix = 0;
-  int y = 0;
-  int x = 0;
-
-  if(arquivo) //!= null
-  {
-    fscanf(arquivo, "%d", &array.length);
-    
-    if(array.length <= 0)
-    {
-      array.length = 0;
-      printf("ERRO: Valor invalido.");
-    }
-    else
-    {
-      array.data = (int*)malloc(array.length * sizeof(int));
-
-      if(array.data)
-      {
-        while(!feof(arquivo) && array.ix < array.length)
-        {
-          fscanf(arquivo, "%d", &array.data[array.ix]);
-          array.ix++;
-        }
-      }
-    }
-  }
-  return ( array );
-}
-
-int ArraySearch (int n, int_Array array)
-{
-  int position = 0;
-  // printf("aqui.");
-  // printintArray(array);
-  bool teste = false;
-
-  while (n == array.data[array.ix] && array.ix < array.length)
-  {
-    if(array.ix < array.length)
-    {
-      position = array.ix;
-    }
-  }
-  
-  return (position);
-}
-
-bool arrayCompare (int_Array array1, int_Array array2)
-{
-  bool result = true;
-  int count = 0;
-  // printintArray(array1);
-  // printintArray(array2);
-  for(array1.ix = 0; array1.ix < array1.length; array1.ix++)
-  {
-    if(array1.data[array1.ix] != array2.data[array1.ix])
-    {
-      result = false;
-    }
-  }
-  return result;
-}
-
-int_Array arrayAdd (int_Array array1, int_Array array2, int_Array array3)
-{
-  // ref_int_Array array3;
-  array3.data = malloc(array1.length * sizeof(int));
-  // printf("lenght 3 = %d", array3.length);
-  if(array1.data && array2.data && array3.data)
-  {
-    array3.length = array1.length;
-    for(int i = 0; i < array1.length; i++)
-    {
-      array3.data[i] = array1.data[i] + array2.data[i];
-      // printf("%d\n", array3.data[i]);
-    }
-  }
-
-  return array3;
-}
 
 void method_01(void) 
 {
-  int_Array array; //como se estivesse inicializando um objeto
   int n = G_readint("Digite o tamanho do array: ");
-  array.length = n;
-  array.ix = 0;
-  
-  int a = G_readint("Digite o valor inferior do intervalo: ");
-  int b = G_readint("Digite o valor superior do intervalo: ");
-  int x = 0;
-
-  array.data = (int*)malloc(array.length * sizeof(int));
-
-  if(array.data) //!= null 
+  int a = G_readint("Digite o valor A do intervalo: ");
+  int b = G_readint("Digite o valor B do intervalo: "); 
+  pointer_int_Array array = null;
+  array = new_int_array(n); 
+  int x = 0; 
+  if(array)
   {
-    while (array.ix < array.length)
+    if(n > 0)
     {
-      x = rand() % 100;
-      if(x >= a && x <= b)
+      array->lenght = n;
+      array->ix = 0; 
+      if(array)
       {
-        printf("x = %d\n", x);
-        array.data[array.ix] = x;
-        array.ix++;
+        while (array->ix < n)
+        {
+          x = rand() % 100; 
+          if(x >= a && x <= b)
+          {
+            array->data[array->ix] = x;
+            array->ix++;
+          }
+        }
       }
+      int_printArray(array);
+      fprintArray(array, "DADOS.TXT");
+      free(array->data); 
+      free(array);
     }
-  }
-
-  printintArray(array);
-
-  if(array.data)
-  {
-    free(array.data);
-  }
+  } 
 }
 void method_02(void) 
 {
-  int_Array array;
-  array = readArrayfromfile("DADOS.TXT");
-  int result = 0;
+  pointer_int_Array array = readArrayfromfile("DADOS1.TXT");
+  int x = G_readint("Digite o valor a ser procurado no array: ");
 
-  if(array.data)
-  {
-    printintArray(array);
-    result = ArraySearch(10, array);
-    printf("%d", result);
-  }
+  int_printArray(array);
+  
+  printf("\no valor %d esta na posicao %d",x,  ArraySearch(array, x));
 
-  if(array.data != null)
-  {
-    free (array.data);
-  }
+  free(array->data);
+  free(array);
+
 }
 void method_03(void)
 {
-  int_Array array1;
-  int_Array array2;
-  array1 = readArrayfromfile("DADOS1.TXT");
-  array2 = readArrayfromfile("DADOS2.TXT");
+  pointer_int_Array array1 = readArrayfromfile("DADOS1.TXT");
+  pointer_int_Array array2 = readArrayfromfile("DADOS2.TXT");
 
-  printf("array1: \n");
-  printintArray(array1);
-  printf("array2: \n");
-  printintArray(array2);
-  if(array1.length == array2.length)
+  if(array1 != NULL && array2 != NULL)
   {
-    // printf("\nlenght1 = %d\n", array1.length);
-    // printf("\nlenght2 = %d\n", array2.length);
-    if(arrayCompare(array1, array2))
+    if (ArrayCompare(array1, array2)) 
     {
-      printf("Arrays iguais.\n");
+      printf("\nOs arrays sao iguais.");
+    } 
+    else 
+    {  
+      printf("Os arrays nao sao iguais.");
     }
-    else
-    {
-      printf("Arrays diferentes.\n");
-    }
+  } 
+  else 
+  {
+    printf("Erro ao ler os arrays dos arquivos.");
   }
+
+  free(array1->data);
+  free(array1);
+  free(array2->data);
+  free(array2);
 }
+
 void method_04(void) 
 {
-  int_Array array1;
-  int_Array array2;
-  int_Array array3;
-  array1 = readArrayfromfile("DADOS1.TXT");
-  array2 = readArrayfromfile("DADOS2.TXT");
+  pointer_int_Array array1 = readArrayfromfile("DADOS1.TXT");
+  pointer_int_Array array2 = readArrayfromfile("DADOS2.TXT");
+  pointer_int_Array array3 = null;
 
-  array3 = arrayAdd (array1, array2, array3);
-  printf("1:\n");
-  printintArray(array1);
-  printf("2:\n");
-  printintArray(array2);
-  printf("3:\n");
-  printintArray(array3);
+  array3 = ArrayAdd(array1, array2);
+  int_printArray(array1);
+  printf("\n");
+  int_printArray(array2);
+  printf("\nsoma:\n");
+  int_printArray(array3);
+
+  free(array1->data);
+  free(array1);
+  free(array2->data);
+  free(array2);
+  free(array3->data);
+  free(array3);
 }
 void method_05(void) 
 {
+  pointer_int_Array array = null;
+  array = readArrayfromfile("DADOS1.TXT");
 
+  if(ArrayDecrescent(array))
+  {
+    int_printArray(array);
+    printf("\nArray decrescente.\n");
+  }
+  else
+  { 
+    int_printArray(array);
+    printf("\nArray nao decrescente.\n");
+  }
+  
+  free(array->data);
+  free(array);
 }
 void method_06(void)
 {
- 
+  pointer_int_Matrix matrix = readMatrixfromfile("DADOS3.TXT");
+
+  int_printMatrix(matrix);
+  printf("\n");
+
+  pointer_int_Matrix newMatrix = matrixTranspose(matrix);
+
+  int_printMatrix(newMatrix);
+
+  free_int_Matrix(matrix);
+  free_int_Matrix(newMatrix);
 }
 void method_07(void) 
 {
+  pointer_int_Matrix matrix = readMatrixfromfile ("MATRIX1.TXT");
 
+  if(MatrixZero(matrix))
+  {
+    int_printMatrix(matrix);
+    printf("\nMatrix com todos dados iguais a 0.\n");
+  }
+  else
+  {
+    int_printMatrix(matrix);
+    printf("\nMatrix nao tem todos dados iguais a 0.");
+  }
+
+  free_int_Matrix(matrix);
 }
 void method_08(void) 
 {
+  pointer_int_Matrix matrix1 = readMatrixfromfile("MATRIX1.TXT");
+  pointer_int_Matrix matrix2 = readMatrixfromfile("MATRIX2.TXT"); 
 
+  if(MatrixCompare(matrix1, matrix2))
+  {
+    int_printMatrix(matrix1);
+    printf("\n");
+    int_printMatrix(matrix2);
+    printf("\nAs matrizes sao iguais.");
+  } 
+  else
+  {
+    int_printMatrix(matrix1);
+    printf("\n");
+    int_printMatrix(matrix2);
+    printf("\nAs matrizes NAO sao iguais.");
+  }
+  free_int_Matrix(matrix1);
+  free_int_Matrix(matrix2);  
 }
 void method_09(void)
 {
- 
+  pointer_int_Matrix matrix1 = readMatrixfromfile("MATRIX1.TXT");
+  pointer_int_Matrix matrix2 = readMatrixfromfile("MATRIX2.TXT"); 
+  pointer_int_Matrix matrix3 = MatrixAdd(matrix1, matrix2); 
+
+  int_printMatrix(matrix1);
+  printf("\n");
+  int_printMatrix(matrix2);
+  printf("\nsoma:\n ");
+  int_printMatrix(matrix3);
+
+  free_int_Matrix(matrix1);
+  free_int_Matrix(matrix2);
+  free_int_Matrix(matrix3);
 }
 void method_10(void) 
 {
+  pointer_int_Matrix matrix1 = readMatrixfromfile("MATRIX1.TXT");
+  pointer_int_Matrix matrix2 = readMatrixfromfile("MATRIX2.TXT"); 
+  pointer_int_Matrix matrix3 = MatrixProduct(matrix1, matrix2); 
 
+  printf("matrix1\n");
+  int_printMatrix(matrix1);
+  printf("\nmatrix2\n");
+  int_printMatrix(matrix2);
+  printf("\nproduto:\n ");
+  int_printMatrix(matrix3);
+
+  free_int_Matrix(matrix1);
+  free_int_Matrix(matrix2);
+  free_int_Matrix(matrix3);
 }
 void method_11e(void) 
 {
-
+  pointer_int_Array array = readArrayfromfile("DADOS2.TXT");
+  int_printArray(array);
+  printf("\n");
+  SortArrayDown(array);
+  int_printArray(array);
 }
 void method_12e(void) 
 {
@@ -291,7 +223,7 @@ int main(int argc, char *argv[]) {
 
   int opcao = 0;
 
-  printf("%s\n", "Estudo dirigido 0?");
+  printf("%s\n", "Estudo dirigido 10");
   printf("%s\n", "Autor: Gabriel Xavier Borges");
   printf("\n");
 

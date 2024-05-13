@@ -37,19 +37,6 @@ void method_00 ( )
  // nao faz nada 
 } // end method_00 ( ) 
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 /** 
    Method_01 - Mostrar certa quantidade de valores. 
  */ 
@@ -82,8 +69,20 @@ void method_01 ( )
  */ 
 void method_02 ( ) 
 { 
+ // definir dados 
+    Array  <int> int_array ( 5, 0 ); 
+ 
  // identificar 
     cout <<  endl << "Method_02 - v0.0" << endl; 
+ 
+ // ler dados 
+    int_array.read  ( ); 
+ 
+ // mostrar dados 
+    int_array.print ( ); 
+ 
+ // reciclar espaco 
+    int_array.free ( );  
  
  // encerrar 
     pause ( "Apertar ENTER para continuar" ); 
@@ -94,33 +93,47 @@ void method_02 ( )
  */ 
 void method_03 ( ) 
 { 
+ // definir dados 
+    Array  <int> int_array ( 5, 0 ); 
+ 
  // identificar 
     cout <<  endl << "Method_03 - v0.0" << endl; 
+ 
+ // ler dados 
+    int_array.read  ( ); 
+ 
+ // mostrar dados 
+    int_array.fprint ( "INT_ARRAY1.TXT" ); 
+ 
+ // reciclar espaco 
+    int_array.free ( );  
  
  // encerrar 
     pause ( "Apertar ENTER para continuar" ); 
 } // end method_03 ( ) 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
 /** 
    Method_04. 
  */ 
 void method_04 ( ) 
 { 
+// definir dados 
+    Array  <int> int_array ( 5, 0 ); 
+ 
  // identificar 
     cout <<  endl << "Method_04 - v0.0" << endl; 
  
+ // ler dados 
+    int_array.fread ( "INT_ARRAY1.TXT" ); 
+ 
+ // mostrar dados 
+    int_array.print ( ); 
+ 
+ // reciclar espaco 
+    int_array.free ( );  
+ 
  // encerrar 
-    pause ( "Apertar ENTER para continuar" ); 
+    pause ( "Apertar ENTER para continuar" );
 } // end method_04 ( ) 
  
 /** 
@@ -128,11 +141,22 @@ void method_04 ( )
  */ 
 void method_05 ( ) 
 { 
+ // definir dados 
+    int other [ ] = { 1, 2, 3, 4, 5 }; 
+    Array  <int> int_array ( 5, other ); 
+ 
  // identificar 
     cout <<  endl << "Method_05 - v0.0" << endl; 
  
+ // mostrar dados 
+    cout << "\nCopia\n" << endl; 
+    int_array.print (  ); 
+ 
+ // reciclar espaco 
+    int_array.free ( );  
+ 
  // encerrar 
-    pause ( "Apertar ENTER para continuar" ); 
+    pause ( "Apertar ENTER para continuar" );
 } // end method_05 ( ) 
  
 /** 
@@ -140,11 +164,32 @@ void method_05 ( )
  */ 
 void method_06 ( ) 
 { 
+// definir dados 
+    Array  <int> int_array1 ( 1, 0 ); 
+ 
  // identificar 
     cout <<  endl << "Method_06 - v0.0" << endl; 
  
+ // ler dados 
+    int_array1.fread ( "INT_ARRAY1.TXT" ); 
+ 
+ // mostrar dados 
+    cout << "\nOriginal\n" << endl; 
+    int_array1.print ( ); 
+ 
+ // criar   copia 
+    Array <int> int_array2 ( int_array1 ); 
+ 
+ // mostrar dados 
+    cout << "\nCopia\n" << endl; 
+    int_array2.print ( ); 
+ 
+ // reciclar espaco 
+    int_array1.free ( );  
+    int_array2.free ( );  
+ 
  // encerrar 
-    pause ( "Apertar ENTER para continuar" ); 
+    pause ( "Apertar ENTER para continuar" );
 } // end method_06 ( ) 
  
 /** 
@@ -152,11 +197,33 @@ void method_06 ( )
  */ 
 void method_07 ( ) 
 { 
- // identificar 
-    cout <<  endl << "Method_07 - v0.0" << endl; 
+ // definir dados 
+    Array  <int> int_array1 ( 1, 0 ); 
+    Array  <int> int_array2 ( 1, 0 ); 
  
- // encerrar 
-    pause ( "Apertar ENTER para continuar" ); 
+ // identificar 
+    cout << endl << "Method_07 - v0.0" << endl; 
+ 
+ // ler dados 
+    int_array1.fread ( "INT_ARRAY1.TXT" ); 
+ 
+ // mostrar dados 
+    cout << "\nOriginal\n" << endl; 
+    int_array1.print ( ); 
+ 
+ // copiar  dados 
+    int_array2 = int_array1; 
+ 
+ // mostrar dados 
+    cout << "\nCopia\n" << endl; 
+    int_array2.print ( ); 
+ 
+ // reciclar espaco 
+    int_array1.free ( );  
+    int_array2.free ( );  
+ 
+// encerrar 
+    pause ( "Apertar ENTER para continuar" );
 } // end method_07 ( ) 
  
 /** 
@@ -164,8 +231,44 @@ void method_07 ( )
  */ 
 void method_08 ( ) 
 { 
+ // definir dados 
+    int   other [ ] = { 1, 2, 3 }; 
+    Array <int> int_array1 ( 3, other ); 
+    Array <int> int_array2 ( 3, other ); 
+    int x; 
+ 
  // identificar 
     cout <<  endl << "Method_08 - v0.0" << endl; 
+ 
+ // mostrar dados 
+    cout << endl; 
+    cout << "Array_1"; 
+    int_array1.print ( ); 
+
+ // mostrar dados 
+    cout << "Array_2"; 
+    int_array2.print ( ); 
+ 
+ // mostrar comparacao 
+    cout << "Igualdade = " << (int_array1==int_array2) << endl; 
+ 
+ // alterar dado 
+    int_array2.set ( 0, (-1) ); 
+ 
+ // mostrar dados 
+    cout << endl; 
+    cout << "Array_1" << endl; 
+    int_array1.print ( ); 
+     
+    cout << "Array_2" << endl; 
+    int_array2.print ( ); 
+ 
+ // mostrar comparacao 
+    cout << "Igualdade = " << (int_array1==int_array2) << endl; 
+ 
+ // reciclar espaco 
+    int_array1.free ( );  
+    int_array2.free ( );  
  
  // encerrar 
     pause ( "Apertar ENTER para continuar" ); 
@@ -176,11 +279,43 @@ void method_08 ( )
  */ 
 void method_09 ( ) 
 { 
+ // definir dados 
+    Array  <int> int_array1 ( 1, 0 ); 
+    Array  <int> int_array2 ( 1, 0 ); 
+    Array  <int> int_array3 ( 1, 0 ); 
+ 
  // identificar 
-    cout <<  endl << "Method_09 - v0.0" << endl; 
+    cout <<  endl << "EXEMPLO1110 - Method_09 - v0.0" << endl; 
+ 
+ // ler dados 
+    int_array1.fread ( "INT_ARRAY1.TXT" ); 
+ 
+ // copiar  dados 
+    int_array2 = int_array1; 
+ 
+ // somar   dados 
+    int_array3 = int_array2 + int_array1; 
+ 
+ // mostrar dados 
+    cout << endl; 
+    cout << "Original" << endl; 
+    int_array1.print ( ); 
+ 
+ // mostrar dados 
+    cout << "Copia"    << endl; 
+    int_array2.print ( ); 
+ 
+ // mostrar dados 
+    cout << "Soma"     << endl; 
+    int_array3.print ( ); 
+ 
+ // reciclar espaco 
+    int_array1.free ( );  
+    int_array2.free ( );  
+    int_array3.free ( );  
  
  // encerrar 
-    pause ( "Apertar ENTER para continuar" ); 
+    pause ( "Apertar ENTER para continuar" );
 } // end method_09 ( ) 
  
  
@@ -189,8 +324,27 @@ void method_09 ( )
  */ 
 void method_10 ( ) 
 { 
+// definir dados 
+    int other [ ] = { 1, 2, 3, 4, 5 }; 
+    Array  <int> int_array ( 5, other ); 
+    int x; 
+ 
  // identificar 
     cout <<  endl << "Method_10 - v0.0" << endl; 
+ 
+ // mostrar dados 
+    cout << "\nAcesso externo" << endl; 
+    for ( x=0; x<int_array.getLength( ); x=x+1 ) 
+    { 
+        cout << endl << setw( 3 ) << x << " : " << int_array [ x ]; 
+    } // fim repetir 
+    cout << endl << "\nFora dos limites:"; 
+    cout << endl << "[-1]: " << int_array.get(-1) << endl; 
+    cout << endl << "["       << int_array.getLength( ) << "]: "  
+                                           << int_array [ int_array.getLength( ) ] << endl; 
+ 
+ // reciclar espaco 
+    int_array.free ( );  
  
  // encerrar 
     pause ( "Apertar ENTER para continuar" ); 

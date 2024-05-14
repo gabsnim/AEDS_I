@@ -8,7 +8,7 @@
 
 typedef struct S_Array
 {
-    int lenght;
+    int length;
     int *data;
     int ix;
 } int_Array;
@@ -27,7 +27,7 @@ pointer_int_Array new_int_array(int n)
             array->data = malloc(n * sizeof(int)); // reservar espaco
             if (array->data)
             {
-                array->lenght = n;
+                array->length = n;
             }
         }
     }
@@ -38,7 +38,7 @@ pointer_int_Array init_int_Array(pointer_int_Array array, int x)
 {
     if (array)
     {
-        for (array->ix = 0; array->ix < array->lenght; array->ix++)
+        for (array->ix = 0; array->ix < array->length; array->ix++)
         {
             array->data[array->ix] = x;
         }
@@ -50,7 +50,7 @@ void int_printArray(pointer_int_Array array)
 {
     if (array)
     {
-        for (array->ix = 0; array->ix < array->lenght; array->ix++)
+        for (array->ix = 0; array->ix < array->length; array->ix++)
         {
             printf("%d ", array->data[array->ix]);
         }
@@ -63,8 +63,8 @@ void fprintArray(pointer_int_Array array, chars Filaneme)
 
     if (arquivo)
     {
-        fprintf(arquivo, "%d\n", array->lenght);
-        for (array->ix = 0; array->ix < array->lenght; array->ix++)
+        fprintf(arquivo, "%d\n", array->length);
+        for (array->ix = 0; array->ix < array->length; array->ix++)
         {
             fprintf(arquivo, "%d\n", array->data[array->ix]);
         }
@@ -81,7 +81,7 @@ void fprintArray(pointer_int_Array array, chars Filaneme)
 
 //     if(arquivo)
 //     {
-//         fscanf(arquivo, "%d", &array.lenght);
+//         fscanf(arquivo, "%d", &array.length);
 
 //         if(array.data <= 0)
 //         {
@@ -89,11 +89,11 @@ void fprintArray(pointer_int_Array array, chars Filaneme)
 //         }
 //         else
 //         {
-//             array.data = (int*)malloc(array.lenght * sizeof(int));
+//             array.data = (int*)malloc(array.length * sizeof(int));
 
 //             if(array.data)
 //             {
-//                 while (!feof(arquivo) && array.ix < array.lenght)
+//                 while (!feof(arquivo) && array.ix < array.length)
 //                 {
 //                     fscanf(arquivo, "%d", &array.data[array.ix]);
 //                     array.ix++;
@@ -120,8 +120,8 @@ pointer_int_Array readArrayfromfile(chars Filename)
 
             if (array)
             {
-                array->lenght = length;
-                for (array->ix = 0; array->ix < array->lenght; array->ix++)
+                array->length = length;
+                for (array->ix = 0; array->ix < array->length; array->ix++)
                 {
                     fscanf(arquivo, "%d", &array->data[array->ix]);
                 }
@@ -137,7 +137,7 @@ int ArraySearch (pointer_int_Array array, int x)
     int search = 0;
     if(array)
     {
-        for(array->ix = 0; array->ix < array->lenght; array->ix++)
+        for(array->ix = 0; array->ix < array->length; array->ix++)
         {
             if(x == array->data[array->ix])
             {
@@ -158,7 +158,7 @@ bool ArrayCompare (pointer_int_Array array1, pointer_int_Array array2)
     }
     else
     {
-        for(array1->ix = 0; array1->ix < array1->lenght; array1->ix++)
+        for(array1->ix = 0; array1->ix < array1->length; array1->ix++)
         {
             if(array1->data[array1->ix] != array2->data[array2->ix])
             {
@@ -178,11 +178,11 @@ pointer_int_Array ArrayAdd (pointer_int_Array array1, pointer_int_Array array2)
     }
     else
     {
-        // printf("%d", array1->lenght);
-        if(array1->lenght == array2->lenght)
+        // printf("%d", array1->length);
+        if(array1->length == array2->length)
         {
-            array3 = new_int_array (array1->lenght);
-            for(array1->ix = 0; array1->ix < array1->lenght; array1->ix++)
+            array3 = new_int_array (array1->length);
+            for(array1->ix = 0; array1->ix < array1->length; array1->ix++)
             {
                 array3->data[array1->ix] = array1->data[array1->ix] + array2->data[array1->ix];
             }
@@ -201,7 +201,7 @@ bool ArrayDecrescent (pointer_int_Array array)
     }
     else
     {
-        for(array->ix = 0; array->ix < array->lenght-1; array->ix++)
+        for(array->ix = 0; array->ix < array->length-1; array->ix++)
         {
             if(array->data[array->ix] < array->data[array->ix + 1])
             {
@@ -217,9 +217,9 @@ pointer_int_Array SortArrayDown (pointer_int_Array array)
     int aux = 0;
     if(array)
     {
-        for(int i = 0; i < array->lenght; i++)
+        for(int i = 0; i < array->length; i++)
         {
-           for(int j = 0; j < array->lenght - i - 1; j++)
+           for(int j = 0; j < array->length - i - 1; j++)
            {
             if(array->data[j] < array->data[j + 1])
             {

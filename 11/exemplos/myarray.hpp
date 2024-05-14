@@ -4,6 +4,9 @@
 // dependencias 
  
 #include <iostream> 
+#include <cstring>
+#include <cstdlib>
+
 using std::cin  ;  // para entrada 
 using std::cout;  // para saida 
 using std::endl;  // para mudar de linha 
@@ -15,7 +18,7 @@ using std::setw;   // para definir espacamento
 using std::string;   // para cadeia de caracteres 
  
 #include <fstream> 
-using std::ofstream;   // para gravar arquivo 
+using std::ofstream;    // para gravar arquivo 
 using std::ifstream ;   // para ler       arquivo 
  
  

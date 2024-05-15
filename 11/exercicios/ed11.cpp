@@ -42,10 +42,17 @@ void method_00 ( )
  */ 
 void method_01 ( ) 
 { 
-   ref_int_Array array = new int_Array (5);
-   array->init(0);
+   int n = 0;
+   cout << "Digite o tamanho do array: ";
+   cin >> n;
+   //criacao do objeto (array de tamanho n);
+   ref_int_Array array = new int_Array(n);
+
+   array->randomArray(10, 100);
    array->print();
-   array->~int_Array();
+   array->fprint("DADOS1.TXT");
+   // int x = array->searchFirstOdd();
+   // cout << " " << x << endl;
 } // end method_01 ( ) 
  
 /** 
@@ -53,7 +60,7 @@ void method_01 ( )
  */ 
 void method_02 ( ) 
 { 
-
+   
 } // end method_02 ( ) 
  
 /** 
@@ -139,18 +146,18 @@ int main ( int argc, char** argv )
         cout << "EXEMPLO1101 - Programa - v0.0\n    " << endl; 
  
      // mostrar opcoes 
-        cout << "Opcoes      " << endl; 
-        cout << " 0 - parar  " << endl; 
-        cout << " 1 -        " << endl; 
-        cout << " 2 -        " << endl; 
-        cout << " 3 -        " << endl; 
-        cout << " 4 -        " << endl; 
-        cout << " 5 -        " << endl; 
-        cout << " 6 -        " << endl; 
-        cout << " 7 -        " << endl; 
-        cout << " 8 -        " << endl; 
-        cout << " 9 -        " << endl; 
-        cout << "10 -        " << endl; 
+        cout << "Opcoes                 " << endl; 
+        cout << " 0 - parar             " << endl; 
+        cout << " 1 - exercicio01       " << endl; 
+        cout << " 2 - exercicio02       " << endl; 
+        cout << " 3 - exercicio03       " << endl; 
+        cout << " 4 - exercicio04       " << endl; 
+        cout << " 5 - exercicio05       " << endl; 
+        cout << " 6 - exercicio06       " << endl; 
+        cout << " 7 - exercicio07       " << endl; 
+        cout << " 8 - exercicio08       " << endl; 
+        cout << " 9 - exercicio09       " << endl; 
+        cout << "10 - exercicio10       " << endl; 
  
      // ler do teclado 
         cout << endl << "Entrar com uma opcao: "; 

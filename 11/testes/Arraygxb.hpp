@@ -26,7 +26,7 @@ class int_Array
     ~int_Array(); //destrutor
     int_Array* init (int value); //init
     int_Array* read (); //read
-    int_Array* fread (string Filename); //write
+    int_Array* fread (string Filename); //file read
     int_Array* randomArray(int inferior, int superior); //randomArray 
     int searchFirstOdd();
     void print(); //print
@@ -107,7 +107,7 @@ class int_Array
                 {
                     for(int i = 0; i < length; i++)
                     {
-                    file >> array->data[i];
+                        file >> array->data[i];
                     }
                 }
                 return array;

@@ -44,6 +44,7 @@ void method_01 ( )
 { 
  // definir dados 
     Array  <int> int_array ( 5, 0 ); 
+
  
     int_array.set ( 0, 1 ); 
     int_array.set ( 1, 2 ); 

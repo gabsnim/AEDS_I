@@ -222,9 +222,68 @@ void method_10 ( )
     obj_array.fread("DADOS.TXT");
     obj_array.print();
     obj_array.sortDown();
+    cout << "Decrescente: " << endl;
+    obj_array.print();
+    obj_array.sortUp();
+    cout << "Crescente: " << endl;
     obj_array.print();
     obj_array.free();
 } // end method_10 ( ) 
+
+/**
+    Method_11.
+*/
+void method_11 ( )
+{
+    Array <int> array1 (5, 0);
+    Array <int> array2 (5, 0);
+
+    cout << "Digite os elementos do array1: " << endl;
+    array1.read();
+    cout << "Digite os elementos do array2: " << endl;
+    array2.read();
+
+    if(array1 != array2)
+    {
+        array1.print();
+        array2.print();
+        cout << "Os arrays NAO sao iguais. " << endl;
+    }
+    else
+    {
+        array1.print();
+        array2.print();
+        cout << "Os arrays sao iguais. " << endl;
+    }
+    array1.free();
+    array2.free();
+}
+
+/**
+    Method_12.
+*/
+void method_12 ( )
+{
+    Array <int> array1 (5, 0);
+    Array <int> array2 (5, 0);
+    Array <int> array3 (5, 0);
+
+    cout << "Digite os elementos do array1: " << endl;
+    array1.read();
+    cout << "Digite os elementos do array2: " << endl;
+    array2.read();
+
+    array3 = array1 - array2;
+
+    array1.print();
+    array2.print();
+    cout << "Diferença entre array1 e array2: " << endl;
+    array3.print();
+
+    array1.free();
+    array2.free();
+    array3.free();
+}
  
 // ----------------------------------------------- acao principal 
  
@@ -256,6 +315,8 @@ int main ( int argc, char** argv )
         cout << " 8 - exercicio08       " << endl; 
         cout << " 9 - exercicio09       " << endl; 
         cout << "10 - exercicio10       " << endl; 
+        cout << "11 - exercicio11e      " << endl; 
+        cout << "12 - exercicio12e      " << endl; 
  
      // ler do teclado 
         cout << endl << "Entrar com uma opcao: "; 
@@ -276,6 +337,8 @@ int main ( int argc, char** argv )
           case 8:   method_08 ( );   break; 
           case 9:   method_09 ( );   break; 
           case 10: method_10 ( );   break; 
+          case 11: method_11 ( ); break;
+          case 12: method_12 ( ); break;
           default: 
             cout << endl << "ERRO: Valor invalido." << endl; 
         } // end switch 

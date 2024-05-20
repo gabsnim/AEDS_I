@@ -262,6 +262,9 @@ class Array
        return ( value ); 
     } // end operator [ ]
 
+    /*
+        Funcao para gerar um array com inteiros aleatorios
+    */
     Array randomIntGenerate (int inferior, int superior)
     {
         int i = 0;
@@ -295,7 +298,9 @@ class Array
         }
         return maior;
     }
-
+    /*
+        Funcao para procurar o menor valor impar multiplo de 3
+    */
     int searchFirstOdd3x()
     {
         bool teste = false;
@@ -325,6 +330,9 @@ class Array
         return menor;
     }
 
+    /*
+        Funcao para somar valores de um arranjo num determinado intervalo
+    */
     T addInterval (int inicio, int fim)
     {
         T soma = optional;
@@ -338,6 +346,9 @@ class Array
         return soma;
     }
 
+    /*
+        Funcao para calcular a media entre valores de um arranjo
+    */
     double averageInterval (int inicio, int fim)
     {
         double media = 0.0;
@@ -354,6 +365,9 @@ class Array
         return ( media );
     }
 
+    /*
+        Funcao para verificar se um arranjo e composto apenas de valores negativos
+    */
     bool allNegatives ()
     {
         bool result = true;
@@ -369,6 +383,9 @@ class Array
         return result;
     }
 
+    /*
+        Funcao para verificar se um arranjo e crescente
+    */
     bool isCrescent ()
     {
         bool result = true;
@@ -382,6 +399,9 @@ class Array
         return result;
     }
 
+    /*
+        Funcao para procurar um valor no arranjo
+    */
     bool searchInterval (T procurado, int inicio, int fim)
     {
         bool result = false;
@@ -397,6 +417,9 @@ class Array
         return result;
     }
 
+    /*
+        Funcao para multiplicar valores em um arranjo por uma constante
+    */
     Array scalar (T constante, int inicio, int fim)
     {
         Array new_array(*this);
@@ -408,7 +431,31 @@ class Array
         return new_array;
     } 
 
+    /*
+        Funcao para ordenar um arranjo em ordem decrescente
+    */
     Array sortDown ()
+    {
+        int test = 0;
+        for(int i = 0; i < length; i++)
+        {
+            for(int j = i + 1; j < length; j++)
+            {
+                if(data[j] > data[i])
+                {
+                    test = data[j];
+                    data[j] = data[i];
+                    data[i] = test;
+                }
+            }
+        }
+        return *this;
+    }
+
+    /*
+        Funcao para ordenar um arranjo em ordem crescente
+    */
+    Array sortUp ()
     {
         int test = 0;
         for(int i = 0; i < length; i++)
@@ -424,6 +471,50 @@ class Array
             }
         }
         return *this;
+    }
+
+    /*
+        operador para comparar dois arrays
+    */
+    bool operator!= (Array<T> &comp)
+    {
+        bool result = false;
+
+        if(comp.length != length)
+        {
+            cout << "ERRO: Arrays de tamanhos diferentes. " << endl;
+        }
+        else
+        {
+            for(int i = 0; i < length; i++)
+            {
+                if(data[i] != comp.data[i])
+                {
+                    return true;
+                }
+            }
+        }
+        return result;
+    }
+
+    /*
+        operador para calcular a diferenca entre dois arrays
+    */
+    Array& operator- (Array <T> diff)
+    {
+        static Array <T> result (diff);
+        if(diff.length != length)
+        {
+            cout << "ERRO: arrays de tamanhos diferentes. " << endl;
+        }
+        else
+        {
+            for(int i = 0; i < length; i++)
+            {
+                result.data[i] = this->data[i] - result.data[i];
+            }
+        }
+        return result;
     }
 }; 
  

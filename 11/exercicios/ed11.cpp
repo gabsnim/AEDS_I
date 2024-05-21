@@ -204,9 +204,10 @@ void method_09 ( )
 { 
     Array <int> obj_array (5, 0);
     obj_array.fread("DADOS.TXT");
-    obj_array.print();
+    // obj_array.print();
     Array <int> new_array (5, 0);
     new_array = obj_array.scalar(5, 0, 3);
+    obj_array.print();
     new_array.print();
     obj_array.free();
     new_array.free();

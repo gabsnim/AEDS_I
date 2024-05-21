@@ -118,12 +118,65 @@ class Matrix
        { 
            for ( int y = 0; y < columns; y=y+1 ) 
            { 
-               cout << data[ x ][ y ] << "\t"; 
+               cout << data[ x ][ y ] << " "; 
            } // end for 
            cout << endl; 
        } // end for 
        cout << endl; 
     } // end print ( ) 
+
+    void fprint (string fileName)
+    {
+      ofstream file;
+      file.open(fileName);
+      
+         file << rows << endl;
+         file << columns << endl;
+         for(int i = 0; i < rows; i++)
+         {
+            for(int j = 0; j < columns; j++)
+            {
+               file << data[i][j] << " ";
+            }
+            file << endl;
+         }
+      file.close();
+    }
+
+    void fread (string fileName)
+    {
+      ifstream file;
+      file.open(fileName);
+
+      int m, n = 0;
+      file >> m;
+      file >> n;
+
+      if(n <= 0 || m <= 0)
+      {
+         cout << "ERROR: : Invalid dimensions for matrix. " << endl;
+      }
+      else
+      {
+         rows = m;
+         columns = n;
+
+         data = new T * [rows];
+
+         for(int i = 0; i < rows; i++)
+         {
+            data[i] = new T [columns];
+         }
+
+         for(int i = 0; i < rows; i++)
+         {
+            for(int j = 0; j < columns; j++)
+            {
+               file >> data [i][j];
+            }
+         }
+      }
+    }
 
     Matrix randomMatrixGenerator (int a, int b)
     {
@@ -153,6 +206,20 @@ class Matrix
             }
         }
         return *this;
+    }
+
+    Matrix scalar (T k)
+    {
+      Matrix new_matrix(rows, columns, optional);
+
+      for(int i = 0; i < rows; i++)
+      {
+         for(int j = 0; j < columns; j++)
+         {
+            new_matrix.data[i][j] = data[i][j] * k;     
+         }
+      }
+      return new_matrix;
     }
 }; // end class 
  

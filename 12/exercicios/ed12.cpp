@@ -51,6 +51,7 @@ void method_01 ( )
 
     obj_matrix.randomMatrixGenerator(10,90);
     obj_matrix.print();
+    obj_matrix.fprint("DADOS.TXT");
 
 } // end method_01 ( ) 
  
@@ -59,7 +60,12 @@ void method_01 ( )
  */ 
 void method_02 ( ) 
 { 
-
+   Matrix <int> obj_matrix (2, 2, 0);
+   obj_matrix.fread("DADOS.TXT");
+   Matrix <int> new_matrix (2, 2, 0);
+   new_matrix = obj_matrix.scalar(5);
+   new_matrix.print();
+   obj_matrix.print();
 } // end method_02 ( ) 
  
 /** 

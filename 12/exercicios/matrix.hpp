@@ -154,7 +154,7 @@ class Matrix
 
       if(n <= 0 || m <= 0)
       {
-         cout << "ERROR: : Invalid dimensions for matrix. " << endl;
+         cout << "ERROR: Invalid dimensions for matrix. " << endl;
       }
       else
       {
@@ -176,6 +176,7 @@ class Matrix
             }
          }
       }
+      file.close();
     }
 
     Matrix randomMatrixGenerator (int a, int b)
@@ -220,6 +221,30 @@ class Matrix
          }
       }
       return new_matrix;
+    }
+
+    bool operator!= (Matrix<T> &comp)
+    {
+      bool result = false;
+
+      if(rows != comp.rows || columns != comp.columns)
+      {
+         cout << "ERROR: Missing data";
+      }
+      else
+      {
+         for(int i = 0; i < rows; i++)
+         {
+            for(int j = 0; j < columns; j++)
+            {
+               if(data[i][j] != comp.data[i][j])
+               {
+                  return true;
+               }
+            }
+         }
+      }
+      return result; 
     }
 }; // end class 
  

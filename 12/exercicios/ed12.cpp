@@ -66,6 +66,21 @@ void method_02 ( )
    new_matrix = obj_matrix.scalar(5);
    new_matrix.print();
    obj_matrix.print();
+   Matrix <int> test_matrix (2, 2, 0);
+   test_matrix.fread("DADOS.TXT");
+   test_matrix.print();
+   if(obj_matrix != new_matrix)
+   {
+      cout << "Diferentes " << endl;
+   }
+   if(obj_matrix != test_matrix)
+   {
+      cout << "Diferentes " << endl;
+   }
+   else
+   {
+      cout << "Iguais" << endl;
+   }
 } // end method_02 ( ) 
  
 /** 
@@ -148,7 +163,7 @@ int main ( int argc, char** argv )
     do 
     { 
      // identificar 
-        cout << "EXEMPLO1101 - Programa - v0.0\n    " << endl; 
+        cout << "Estudo dirigido 12\n    " << endl; 
  
      // mostrar opcoes 
         cout << "Opcoes      " << endl; 

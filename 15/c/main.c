@@ -21,7 +21,7 @@ int my_strlen (char* string)
 char* str_push_back (char* str, char c)
 {
     int len = my_strlen(str);
-    char* auxstr = (char*)calloc(len, sizeof(char));
+    char* auxstr = (char*)calloc(len + 1, sizeof(char));
     
     for(int i = 0; i < len; i++)
     {

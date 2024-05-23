@@ -66,21 +66,6 @@ void method_02 ( )
    new_matrix = obj_matrix.scalar(5);
    new_matrix.print();
    obj_matrix.print();
-   Matrix <int> test_matrix (2, 2, 0);
-   test_matrix.fread("DADOS.TXT");
-   test_matrix.print();
-   if(obj_matrix != new_matrix)
-   {
-      cout << "Diferentes " << endl;
-   }
-   if(obj_matrix != test_matrix)
-   {
-      cout << "Diferentes " << endl;
-   }
-   else
-   {
-      cout << "Iguais" << endl;
-   }
 } // end method_02 ( ) 
  
 /** 
@@ -88,7 +73,18 @@ void method_02 ( )
  */ 
 void method_03 ( ) 
 { 
-
+   Matrix <int> obj_matrix (2,2, 0);
+   obj_matrix.fread("DADOS.TXT");
+   if(obj_matrix.identidade())
+   {
+      cout << "A matriz e uma matriz identidade" << endl;
+      obj_matrix.print();
+   }
+   else
+   {
+      cout << "A matriz NAO e uma matriz identidade" << endl;
+      obj_matrix.print();
+   }
 } // end method_03 ( ) 
  
 /** 
@@ -96,7 +92,19 @@ void method_03 ( )
  */ 
 void method_04 ( ) 
 { 
+   Matrix <int> matriz1 (2,2, 0);
+   matriz1.fread("DADOS.TXT");
+   Matrix <int> matriz2 (2,2, 0);
+   matriz2.fread("DADOS2.TXT");
 
+   if(matriz1 == matriz2)
+   {
+      cout << "As matrizes sao iguais. " << endl;
+   }
+   else
+   {
+      cout << "As matrizes NAO sao iguais. " << endl;
+   }
 } // end method_04 ( ) 
  
 /** 
@@ -104,7 +112,10 @@ void method_04 ( )
  */ 
 void method_05 ( ) 
 { 
-
+   Matrix <int> matriz1 (2,2, 0);
+   matriz1.fread("DADOS.TXT");
+   Matrix <int> matriz2 (2,2, 0);
+   matriz2.fread("DADOS2.TXT");
 } // end method_05 ( ) 
  
 /** 

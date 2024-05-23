@@ -1,9 +1,63 @@
-push back -> colocar elemento no final -> 1 2 3 4 5    -> 1 2 3 4 5 "0";
-pop back -> retirar elemento do final  -> 1 2 3 4 5    -> 1 2 3 4 "null"; 
-
-push front -> colocar elemento no começo -> 1 2 3 4 5  -> "0" 1 2 3 4 5;
-pop front -> retirar elemento do começo ->  1 2 3 4 5  -> "null" 2 3 4 5;
-
-pilha - last in first out -> último a entrar, primeiro a sair;
-
-fila - first in first out -> primeiro a entrar, primeiro a sair;
+Lugares especiais em matrizes (nxn)
+_ _ _ _
+| a11 a12 a13 a14 a15 | | a00 a01 a02 a03 a04 |
+| a21 a22 a23 a24 a25 | | a10 a11 a12 a13 a14 |
+| a31 a32 a33 a34 a35 | | a20 a21 a22 a23 a24 |
+| a41 a42 a43 a44 a45 | | a30 a31 a32 a33 a34 |
+|_a51 a52 a53 a54 a55_| |_a40 a41 a42 a43 a44_|
+Matemática Computação
+_ _ _ _
+| a11 a12 a13 a14 a15 | | a11 a12 a13 a14 a15 |
+| a21 a22 a23 a24 a25 | | a21 a22 a23 a24 a25 |
+| a31 a32 a33 a34 a35 | | a31 a32 a33 a34 a35 |
+| a41 a42 a43 a44 a45 | | a41 a42 a43 a44 a45 |
+|_a51 a52 a53 a54 a55 _| |_ a51 a52 a53 a54 a55_|
+diagonal principal diagonal secundária
+aij -> i == j aij -> (i+j) == (n+1)
+_ _ _ _
+| -=- a12 a13 a14 a15 | | a11 a12 a13 a14 -=- |
+| --- -=- a23 a24 a25 | | a21 a22 a23 -=- --- |
+| --- --- -=- a34 a35 | | a31 a32 -=- --- --- |
+| --- --- --- -=- a45 | | a41 -=- --- --- --- |
+|_--- --- --- --- -=- _| |_ -=- --- --- --- ---_|
+triângulo superior triângulo superior secundário
+aij -> i < j aij -> (i+j) < (n+1)
+_ _ _ _
+| -=- --- --- --- --- | | --- --- --- --- -=- |
+| a21 -=- --- --- --- | | --- --- --- -=- a25 |
+| a31 a32 -=- --- --- | | --- --- -=- a34 a35 |
+| a41 a42 a43 -=- --- | | --- -=- a43 a44 a45 |
+|_a51 a52 a53 a54 -=- _| |_ -=- a52 a53 a54 a55_|
+triângulo inferior triângulo inferior secundário
+aij -> i > j aij -> (i+j) > (n+1)
+_ _
+| - a12 a13 a14 - | triângulo norte: aij -> i<j && (i+j)<(n+1)
+| a21 - a23 - a25 | triângulo leste: aij -> i<j && (i+j)>(n+1)
+| a31 a32 - a34 a35 |
+| a41 - a43 - a45 | triângulo oeste: aij -> i>j && (i+j)<(n+1)
+|_ - a52 a53 a54 - _| triângulo sul : aij -> i>j && (i+j)>(n+1)
+___
+Matrizes com características especiais
+_ _ _ _ _ _
+| a11 a12 0 a14 a15 | | a11 a12 a13 a14 a15 | | a11 0 a13 0 a15 |
+| a21 a22 0 a24 a25 | | 0 0 0 0 0 | | a21 0 a23 0 a25 |
+| 0 0 0 0 0 | | a31 a32 a33 a34 a35 | | a31 0 a33 0 a35 |
+| a41 a42 0 a44 a45 | | 0 0 0 0 0 | | a41 0 a43 0 a45 |
+|_a51 a52 0 a54 a55_| |_a51 a52 a53 a54 a55_| |_a51 0 a53 0 a55_|
+em blocos em listras horizontais em listras verticais
+matriz banda matriz faixa matriz faixa
+_ _ _ _ _ _
+| a11 a12 a13 a14 a15 | | a11 a12 0 0 0 | | 0 0 a13 a14 a15 |
+| a21 0 0 0 a25 | | a21 a22 a23 0 0 | | 0 a22 a23 a24 a25 |
+| a31 0 a33 0 a35 | | 0 a32 a33 a34 0 | | a31 a32 a33 a34 a35 |
+| a41 0 0 0 a45 | | 0 0 a43 a44 a45 | | a41 a42 a43 a44 0 |
+|_a51 a52 a53 a54 a55 | |_ 0 0 0 a54 a55 | |_a51 a52 a53 0 0 _|
+em patamares em tridiagonais em n-diagonais
+_ _ _ _ _ _
+| 0 0 0 0 0 | | 1 0 0 0 0 | | a 0 0 0 0 |
+| 0 0 0 0 0 | | 0 1 0 0 0 | | 0 b 0 0 0 |
+| 0 0 0 0 0 | | 0 0 1 0 0 | | 0 0 c 0 0 |
+| 0 0 0 0 0 | | 0 0 0 1 0 | | 0 0 0 d 0 |
+|_ 0 0 0 0 0 _| |_ 0 0 0 0 1 _| |_ 0 0 0 0 e _|
+matriz nula matriz identidade escalonador
+___

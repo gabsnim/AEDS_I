@@ -1,0 +1,9 @@
+push back -> colocar elemento no final -> 1 2 3 4 5    -> 1 2 3 4 5 "0";
+pop back -> retirar elemento do final  -> 1 2 3 4 5    -> 1 2 3 4 "null"; 
+
+push front -> colocar elemento no começo -> 1 2 3 4 5  -> "0" 1 2 3 4 5;
+pop front -> retirar elemento do começo ->  1 2 3 4 5  -> "null" 2 3 4 5;
+
+pilha - last in first out -> último a entrar, primeiro a sair;
+
+fila - first in first out -> primeiro a entrar, primeiro a sair;

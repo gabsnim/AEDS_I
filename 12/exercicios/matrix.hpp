@@ -246,6 +246,63 @@ class Matrix
       }
       return result; 
     }
+
+    bool operator == (Matrix<T> &comp)
+    {
+      bool result = false;
+
+      if(rows != comp.rows || columns != comp.columns)
+      {
+         cout << "ERROR: Missing data";
+      }
+      else
+      {
+         for(int i = 0; i < rows; i++)
+         {
+            for(int j = 0; j < columns; j++)
+            {
+               if(data[i][j] == comp.data[i][j])
+               {
+                  result = true;
+               }
+            }
+         }
+      }
+      return result; 
+    }
+
+    bool identidade ()
+    {
+      bool result = true;
+
+      for(int i = 0; i < rows; i++)
+      {
+         for(int j = 0; j < columns; j++)
+         {
+            if(i == j)
+            {
+               if(data[i][j] != 1)
+               {
+                  result = false;
+               }
+            }
+            else
+            {
+               if(data[i][j] != 0)
+               {
+                  result = false;
+               }
+            }
+         }
+      }
+
+      return result;
+    }
+
+    Matrix add (Matrix<int> &other)
+    { 
+      
+    }
 }; // end class 
  
 #endif

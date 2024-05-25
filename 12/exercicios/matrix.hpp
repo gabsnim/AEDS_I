@@ -299,10 +299,145 @@ class Matrix
       return result;
     }
 
-    Matrix add (Matrix<int> &other)
+    Matrix add (Matrix <T> &other)
     { 
+
+         Matrix new_matrix (rows, columns, 0);
+         for(int i = 0; i < new_matrix.rows; i++)
+         {
+            for(int j = 0; j < new_matrix.columns; j++)
+            {
+               new_matrix.data[i][j] = data[i][j] + other.data[i][j]; 
+  
+            }
+         }
+         // new_matrix.print();
       
+      return new_matrix;
     }
+
+    Matrix addRows (int R1, int R2, T k)
+    {
+      Matrix new_matrix (rows, columns, 0);
+      for(int i = 0; i < new_matrix.rows; i++)
+      {
+         for(int j = 0; j < new_matrix.columns; j++)
+         {
+            new_matrix.data[i][j] = data[i][j];
+         }
+      }
+
+      // for(int i = 0; i < new_matrix.rows; i++)
+      // {
+      //    for(int j = 0; j < new_matrix.columns; j++)
+      //    {
+      //       if(R1 == i)
+      //       {
+      //          new_matrix.data[i][j] = new_matrix.data[R1][j] + (data[R2][j] * k);
+      //       }
+      //    }
+      // }
+
+      for(int j = 0; j < columns; j++)
+      {
+         new_matrix.data[R1][j] = data[R1][j] + (data[R2][j] * k);
+      }
+
+      return new_matrix;
+    }
+
+    Matrix subtractRows (int R1, int R2, T k)
+    {
+      Matrix new_matrix (rows, columns, 0);
+
+      for(int i = 0; i < new_matrix.rows; i++)
+      {
+         for(int j = 0; j < new_matrix.columns; j++)
+         {
+            new_matrix.data[i][j] = data[i][j];
+         }
+      }
+
+      for(int j = 0; j < columns; j++)
+      {
+         new_matrix.data[R1][j] = data[R1][j] - (data[R2][j] * k);
+      }
+      return new_matrix;
+    }
+
+   int searchRows (T value)
+   {
+      int result = -1;
+
+      for(int i = 0; i < rows; i++)
+      {
+         for(int j = 0; j < columns; j++)
+         {
+            if(value == data[i][j])
+            {
+               result = i;
+            }
+         }
+      }
+
+      return result;
+   }
+
+   int searchColumns (T value)
+   {
+      int result = -1;
+
+      for(int i = 0; i < rows; i++)
+      {
+         for(int j = 0; j < columns; j++)
+         {
+            if(value == data[i][j])
+            {
+               result = j;
+            }
+         }
+      }
+      return result;
+   }
+
+   Matrix transpose ()
+   {
+      Matrix new_matrix (columns, rows, 0);
+
+      for(int i = 0; i < new_matrix.rows; i++)
+      {
+         for(int j = 0; j < new_matrix.columns; j++)
+         {
+            new_matrix.data[i][j] = data[j][i];
+         }
+      }
+
+      return new_matrix;
+   }
+
+   bool extra01 ()
+   {
+      bool result = true;
+      return result;
+   }
+
+   Matrix extra02 (int rows, int columns)
+   {
+      Matrix <int> new_matrix (rows, columns, 0);
+      int x = rows * columns;
+      int j = 0;
+
+      while (j < columns)
+      {
+         for(int i = 0; i < rows; i++)
+         {
+            new_matrix.data[i][j] = x;
+            x--;
+         } 
+         j++;
+      }
+      return new_matrix;
+   }
 }; // end class 
  
 #endif

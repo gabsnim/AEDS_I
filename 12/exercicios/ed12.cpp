@@ -116,6 +116,12 @@ void method_05 ( )
    matriz1.fread("DADOS.TXT");
    Matrix <int> matriz2 (2,2, 0);
    matriz2.fread("DADOS2.TXT");
+   matriz1.print();
+   cout << "+" << endl;
+   matriz2.print();
+   matriz1 = matriz1.add(matriz2);
+   cout << "Soma: " << endl;
+   matriz1.print();
 } // end method_05 ( ) 
  
 /** 
@@ -123,7 +129,11 @@ void method_05 ( )
  */ 
 void method_06 ( ) 
 { 
-
+   Matrix <int> matriz1 (2,2, 0);
+   matriz1.fread("DADOS.TXT");
+   matriz1.print();
+   matriz1 = matriz1.addRows(0,1,(-1));
+   matriz1.print();
 } // end method_06 ( ) 
  
 /** 
@@ -131,7 +141,11 @@ void method_06 ( )
  */ 
 void method_07 ( ) 
 { 
-
+   Matrix <int> matriz1 (2,2, 0);
+   matriz1.fread("DADOS.TXT");
+   matriz1.print();
+   matriz1 = matriz1.subtractRows(0,1,(2));
+   matriz1.print();
 } // end method_07 ( ) 
  
 /** 
@@ -139,7 +153,22 @@ void method_07 ( )
  */ 
 void method_08 ( ) 
 { 
+   Matrix <int> matriz1 (2,2, 0);
+   matriz1.fread("DADOS.TXT");
+   matriz1.print();
+   int value, result = 0;
+   cout << "Digite um numero para saber em qual linha ele esta: " << endl;
+   cin >> value;
+   result = matriz1.searchRows(value);
 
+   if(result == (-1))
+   {
+      cout << "O numero nao esta na matriz." << endl; 
+   }
+   else
+   {
+      cout << "O numero esta na linha " << result << " da matriz." << endl;
+   }
 } // end method_08 ( ) 
  
 /** 
@@ -147,7 +176,22 @@ void method_08 ( )
  */ 
 void method_09 ( ) 
 { 
+   Matrix <int> matriz1 (2,2, 0);
+   matriz1.fread("DADOS.TXT");
+   matriz1.print();
+   int value, result = 0;
+   cout << "Digite um numero para saber em qual coluna ele esta: " << endl;
+   cin >> value;
+   result = matriz1.searchColumns(value);
 
+   if(result == (-1))
+   {
+      cout << "O numero nao esta na matriz." << endl; 
+   }
+   else
+   {
+      cout << "O numero esta na coluna " << result << " da matriz." << endl;
+   }
 } // end method_09 ( ) 
  
  
@@ -156,9 +200,44 @@ void method_09 ( )
  */ 
 void method_10 ( ) 
 { 
+   Matrix <int> matriz1  (2,2,0);
+   matriz1.fread("DADOS.TXT");
+   matriz1.print();
+   matriz1 = matriz1.transpose();
+   matriz1.print();
 
 } // end method_10 ( ) 
- 
+
+/** 
+   Method_11. 
+ */ 
+void method_11 ( ) 
+{ 
+   // Matrix <int> matriz1  (2,2,0);
+   // matriz1.fread("DADOS.TXT");
+   // matriz1.print();
+   // matriz1 = matriz1.extra02(4,4);
+   // matriz1.print();
+   // if(matriz1.extra01() == true)
+   // {
+   //    cout << "A matriz apresenta a caracteristica que o exercicio pede. " << endl;
+   // }
+   // else
+   // {
+   //    cout << "A matriz NAO apresenta a caracteristica que o exercicio pede. " << endl;
+   // }
+} // end method_11 ( ) 
+
+/** 
+   Method_12. 
+ */ 
+void method_12 ( ) 
+{ 
+   Matrix <int> matriz1  (2,2,0);
+   matriz1 = matriz1.extra02(4,4);
+   matriz1.print();
+} // end method_12 ( ) 
+
 // ----------------------------------------------- acao principal 
  
 /* 
@@ -189,6 +268,8 @@ int main ( int argc, char** argv )
         cout << " 8 -        " << endl; 
         cout << " 9 -        " << endl; 
         cout << "10 -        " << endl; 
+        cout << "11 -        " << endl; 
+        cout << "12 -        " << endl; 
  
      // ler do teclado 
         cout << endl << "Entrar com uma opcao: "; 
@@ -209,6 +290,9 @@ int main ( int argc, char** argv )
           case 8:   method_08 ( );   break; 
           case 9:   method_09 ( );   break; 
           case 10: method_10 ( );   break; 
+          case 11: method_11 ( );   break;
+          case 12: method_12 ( );   break;
+          
           default: 
             cout << endl << "ERRO: Valor invalido." << endl; 
         } // end switch 

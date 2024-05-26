@@ -253,23 +253,24 @@ int main ( int argc, char** argv )
     do 
     { 
      // identificar 
-        cout << "Estudo dirigido 12\n    " << endl; 
+        cout << endl << "Estudo dirigido 12\n    " << endl; 
+        cout << "Gabriel Xavier Borges\n    " << endl; 
  
      // mostrar opcoes 
         cout << "Opcoes      " << endl; 
         cout << " 0 - parar  " << endl; 
-        cout << " 1 -        " << endl; 
-        cout << " 2 -        " << endl; 
-        cout << " 3 -        " << endl; 
-        cout << " 4 -        " << endl; 
-        cout << " 5 -        " << endl; 
-        cout << " 6 -        " << endl; 
-        cout << " 7 -        " << endl; 
-        cout << " 8 -        " << endl; 
-        cout << " 9 -        " << endl; 
-        cout << "10 -        " << endl; 
-        cout << "11 -        " << endl; 
-        cout << "12 -        " << endl; 
+        cout << " 1 - exercicio 01       " << endl; 
+        cout << " 2 - exercicio 02       " << endl; 
+        cout << " 3 - exercicio 03       " << endl; 
+        cout << " 4 - exercicio 04       " << endl; 
+        cout << " 5 - exercicio 05       " << endl; 
+        cout << " 6 - exercicio 06       " << endl; 
+        cout << " 7 - exercicio 07       " << endl; 
+        cout << " 8 - exercicio 08       " << endl; 
+        cout << " 9 - exercicio 09       " << endl; 
+        cout << "10 - exercicio 10       " << endl; 
+        cout << "11 - extra 01       " << endl; 
+        cout << "12 - extra 02       " << endl; 
  
      // ler do teclado 
         cout << endl << "Entrar com uma opcao: "; 

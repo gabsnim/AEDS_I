@@ -418,6 +418,24 @@ class Matrix
    bool extra01 ()
    {
       bool result = true;
+      int x = 1;
+      int i, j = 0;
+      while(j < columns)
+      {
+            while(i < rows)
+            {
+         // cout << x << endl;
+         // cout << data[i][0] << endl;
+            if(data[i][j] != x)
+            {
+               result = false;
+            }
+            x++;
+            i++;
+            }
+         j++;
+         i = 0;
+      }
       return result;
    }
 

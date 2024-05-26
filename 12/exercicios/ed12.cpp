@@ -213,19 +213,19 @@ void method_10 ( )
  */ 
 void method_11 ( ) 
 { 
-   // Matrix <int> matriz1  (2,2,0);
-   // matriz1.fread("DADOS.TXT");
+   Matrix <int> matriz1  (2,2,0);
+   matriz1.fread("DADOS.TXT");
+   matriz1.print();
+   // matriz1 = matriz1.extra02(4,4);s
    // matriz1.print();
-   // matriz1 = matriz1.extra02(4,4);
-   // matriz1.print();
-   // if(matriz1.extra01() == true)
-   // {
-   //    cout << "A matriz apresenta a caracteristica que o exercicio pede. " << endl;
-   // }
-   // else
-   // {
-   //    cout << "A matriz NAO apresenta a caracteristica que o exercicio pede. " << endl;
-   // }
+   if(matriz1.extra01() == true)
+   {
+      cout << "A matriz apresenta a caracteristica que o exercicio pede. " << endl;
+   }
+   else
+   {
+      cout << "A matriz NAO apresenta a caracteristica que o exercicio pede. " << endl;
+   }
 } // end method_11 ( ) 
 
 /** 

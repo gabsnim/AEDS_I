@@ -42,10 +42,7 @@ void method_00 ( )
  */ 
 void method_01 ( ) 
 { 
-    MyString objeto;
-    objeto.readString();
-    cout << objeto.getString() << endl;
-    cout << objeto.toInt() << endl;
+   
 } // end method_01 ( ) 
  
 /** 

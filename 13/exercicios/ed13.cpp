@@ -6,19 +6,10 @@ Matricula: 805347
 // dependencias 
 #include <iostream> // std::cin, std::cout, std:endl 
 #include <limits> // std::numeric_limits 
-#include <string> // para cadeias de caracteres 
+#include <string> // para cadeias de caracteres
+#include "Contato.hpp" 
  
 // ----------------------------------------------- definicoes globais 
- 
-void pause ( std::string text ) 
-{ 
-    std::string dummy; 
-    std::cin.clear ( ); 
-    std::cout << std::endl << text; 
-    std::cin.ignore( ); 
-    std::getline(std::cin, dummy); 
-    std::cout << std::endl << std::endl; 
-} // end pause ( ) 
  
  
 // ----------------------------------------------- classes / pacotes 
@@ -41,12 +32,9 @@ void method_00 ( )
  */ 
 void method_01 ( ) 
 { 
-   std::cout << "  ________    _____ __________________   \n"
-              << " /  _____/   /  _  \\\\______   \\______ \\  \n"
-              << "/   \\  ___  /  /_\\  \\|    |  _/|    |  \\ \n"
-              << "\\    \\_\\  \\/    |    \\    |   \\|    `   \\\n"
-              << " \\______  /\\____|__  /______  /_______  /\n"
-              << "        \\/         \\/       \\/        \\/ \n";
+    Contato pessoa1;
+    pessoa1.readName();
+    pessoa1.print();
 } // end method_01 ( ) 
  
 /** 
@@ -54,7 +42,10 @@ void method_01 ( )
  */ 
 void method_02 ( ) 
 { 
-
+    Contato pessoa1;
+    pessoa1.readName();
+    pessoa1.readPhone();
+    pessoa1.print();
 } // end method_02 ( ) 
  
 /** 

@@ -42,7 +42,7 @@ class Array
         if ( n > 0 ) 
         { 
              length  = n; 
-             data     = new T [ length ]; 
+             data     = new T [ length ];   // data = malloc(n * sizeof(int));
         } 
     } // end constructor 
  

@@ -26,6 +26,7 @@ using std::string; // para cadeia de caracteres
 using std::ifstream; // para ler    arquivo
 using std::ofstream; // para gravar arquivo
 
+
 // outras dependencias
 
 void pause(std::string text)
@@ -50,6 +51,19 @@ class Contato
     std::string nome;
     std::string fone;
     int n_fone;
+
+    
+    bool foneIsvalid ()
+    {
+        bool r = false;
+
+        if(fone.length() > 0)
+        {
+            r = true;
+        }
+
+        return r;
+    }
 
 
     public:
@@ -125,9 +139,6 @@ class Contato
         std::cout << getN_fone() << std::endl;
         std::cout << std::endl;
     }
-
-
-
 };
 
 #endif

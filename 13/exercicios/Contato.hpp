@@ -26,7 +26,6 @@ using std::string; // para cadeia de caracteres
 using std::ifstream; // para ler    arquivo
 using std::ofstream; // para gravar arquivo
 
-
 // outras dependencias
 
 void pause(std::string text)
@@ -43,101 +42,293 @@ void pause(std::string text)
 
 #include "Erro.hpp"
 
-
 class Contato
 {
-    private:
-
+private:
     std::string nome;
     std::string fone;
+    std::string fone2;
+    std::string Phones[10];
     int n_fone;
+    std::string endResidencial;
+    std::string endProfissional;
 
-    
-    bool foneIsvalid ()
+    bool foneIsvalid()
     {
-        bool r = false;
+        bool r = true;
+        int i = 0;
 
-        if(fone.length() > 0)
+        while (i < fone.length() && r)
         {
-            r = true;
+            if (('0' > fone[i] || fone[i] > '9') && fone[i] != '-')
+            {
+                r = false;
+            }
+            i++;
         }
 
         return r;
     }
 
+    bool fone2Isvalid()
+    {
+        bool r = true;
+        int i = 0;
 
-    public:
+        while (i < fone2.length() && r)
+        {
+            if (('0' > fone2[i] || fone2[i] > '9') && fone2[i] != '-')
+            {
+                r = false;
+            }
+            i++;
+        }
+
+        return r;
+    }
+
+public:
     /**
         Construtor padrao
     */
     Contato()
     {
         nome = "AAAAAAA";
-        fone = "9999-9999";
-        n_fone = 1;
+        fone = "";
+        fone2 = "";
+        n_fone = 0;
+        endProfissional = "";
+        endResidencial = "";
     }
 
-    Contato (std::string nome, std::string fone, int x)
+    Contato(std::string nome, std::string fone, std::string fone2)
     {
         this->nome = nome;
         this->fone = fone;
-        this->n_fone = x;
+        this->fone2 = fone2;
+
+        if (foneIsvalid())
+        {
+            Phones[0] = fone;
+            n_fone = n_fone + 1;
+        }
+
+        if (fone2Isvalid())
+        {
+            Phones[1] = fone2;
+            n_fone = n_fone + 1;
+        }
     }
 
-    void setNome (std::string nome)
+    Contato(std::string nome, int n_fones)
+    {
+        this->nome = nome;
+        this->n_fone = n_fone;
+        Phones[n_fone];
+    }
+
+    void setNome(std::string nome)
     {
         this->nome = nome;
     }
 
-    void setFone (std::string nome)
+    void setPhone1(std::string fone)
     {
-        this->nome = nome;
+        this->Phones[0] = fone;
     }
 
-    void setNfone (int x)
+    void setPhone2(std::string fone)
+    {
+        this->Phones[1] = fone;
+    }
+
+    void removePhone2 ()
+    {
+        if(n_fone == 2)
+        {
+            this->Phones[1] = "";
+            this->n_fone = n_fone - 1;
+        }
+    }
+
+    void setFone(std::string fone)
+    {
+        this->fone = fone;
+    }
+
+    void setFone2(std::string fone2)
+    {
+        this->fone2 = fone2;
+    }
+
+    void setNfone(int x)
     {
         this->n_fone = x;
     }
 
-    void readName ()
+    void readName()
     {
         std::cout << "Digite o nome para cadastro: " << std::endl;
         std::cin >> nome;
     }
 
-    void readPhone ()
+    void readPhone()
     {
         std::cout << "Digite o telefone para cadastro: " << std::endl;
-        std::cin >> fone;
+        cin >> fone;
+        if (!foneIsvalid())
+        {
+            this->fone = "-1";
+            n_fone = 0;
+        }
+
+        Phones[n_fone] = fone;
+        n_fone = n_fone + 1;
     }
 
-    void readn_Phone ()
+    void readPhone2()
     {
-        std::cout << "Digite o numero de telefones para cadastro: " << std::endl;
-        std::cin >> n_fone;
+        std::cout << "Digite o segundo telefone para cadastro: " << std::endl;
+        cin >> fone2;
+        if (!fone2Isvalid())
+        {
+            this->fone2 = "-1";
+            n_fone = 1;
+        }
+
+        Phones[n_fone] = fone2;
+        n_fone = n_fone + 1;
     }
 
-    std::string getNome ()
+    void setEndProfissional (std::string end)
+    {
+        this->endProfissional = end;
+    }
+
+    void setEndResidencial (std::string end)
+    {
+        this->endResidencial = end;
+    }
+
+    std::string getNome()
     {
         return this->nome;
     }
 
-    std::string getFone ()
+    std::string getFone()
     {
         return this->fone;
     }
 
-    int getN_fone ()
+    std::string getFone2()
+    {
+        return this->fone2;
+    }
+
+    int getNfone()
     {
         return this->n_fone;
     }
 
-    void print ()
+    std::string getEndResidencial ()
     {
-        std::cout << getNome() << std::endl;
-        std::cout << getFone() << std::endl;
-        std::cout << getN_fone() << std::endl;
+        return this->endResidencial;
+    }
+
+    std::string getEndProfissional ()
+    {
+        return this->endProfissional;
+    }
+
+    void print()
+    {
+        std::cout << "Nome: " << getNome() << std::endl;
+        std::cout << "Fone1: " << getFone() << std::endl;
+        std::cout << "Fone2: " << getFone2() << std::endl;
         std::cout << std::endl;
+    }
+
+    void read()
+    {
+        std::cout << "Digite o nome: " << std::endl;
+        std::cin >> nome;
+
+        std::cout << "Digite a quantidade de telefones: " << std::endl;
+        std::cin >> n_fone;
+
+        for (int i = 0; i < n_fone; i++)
+        {
+            std::cout << "Digite o telefone " << (i + 1) << ": " << std::endl;
+            std::cin >> Phones[i];
+            fone = Phones[i];
+            if (!foneIsvalid())
+            {
+                Phones[i] = "-1";
+            }
+        }
+        std::cout << "Digite o endereco profissional: " << std::endl;
+        std::cin >> endProfissional;
+        std::cout << "Digite o endereco residencial: " << std::endl;
+        std::cin >> endResidencial;
+    }
+
+    void newPrint()
+    {
+        std::cout << "Nome: " << getNome() << std::endl;
+        std::cout << "Quantidade de telefones: " << getNfone() << std::endl;
+        for (int i = 0; i < n_fone; i++)
+        {
+            std::cout << "telefone " << (i + 1) << ": " << Phones[i] << std::endl;
+        }
+        std::cout << "Endereco Profissional: " << getEndProfissional() << std::endl;
+        std::cout << "Endereco Residencial: " << getEndResidencial() << std::endl;
+        std::cout << std::endl;
+    }
+
+    void readFromFile(std::string fileName)
+    {
+        std::ifstream file;
+
+        int n = 0; // quantidade de dados
+        std::string tempName;
+        std::string tempFone;
+
+        file.open(fileName);
+
+        file >> n; // guardar quantidade de dados
+
+        if (n <= 0)
+        {
+            cout << "Quantidade de dados invalida. " << std::endl;
+        }
+        else
+        {
+            file >> tempName;
+            file >> tempFone;
+
+            this->nome = tempName;
+            this->fone = tempFone;
+
+            if (!foneIsvalid()) // caso o telefone venha antes do fone;
+            {
+                this->fone = tempName;
+                this->nome = tempFone;
+            }
+        }
+    }
+
+    void writeToFile(std::string fileName)
+    {
+        std::ofstream file;
+
+        file.open(fileName);
+
+        if (file.is_open())
+        {
+            file << this->nome << std::endl;
+            file << this->fone << std::endl;
+            file << this->n_fone << std::endl;
+        }
     }
 };
 

@@ -5,8 +5,9 @@ Matricula: 805347
 
 #include "gxb.h"
 
-void method_01(void) 
 
+
+void method_01(void) 
 {
 
 }   
@@ -18,17 +19,68 @@ void method_03(void)
 {
  
 }
+
+int f04(int x, char *s)
+{
+  int result = 0;
+  if(0 <= x && x < strlen(s))
+  {
+    result = (s[x] == '0' || s[x]=='1') && f04 (x+1, s);
+  }
+  else
+  {
+    result = 1;
+  }
+  return result;
+}
 void method_04(void) 
 {
-
+  printf("%d", f04(3, "01|O"));
+  printf("\n%d", f04(2, "0|10"));
+  printf("\n%d", f04(1, "O101"));
+  printf("\n%d", f04(0, "0101"));    
 }
 void method_05(void) 
 {
+  int array [] [3] = {{0,1,2}, {3,4,5}, {6,7,8}};
+  int x = 0, y = 0, z = 0;
+  
+  for(x=0; x < 3; x++)
+  {
+    z = array[2-x][2-x];
+    for(y = 2; y>= 0; y = y - 1)
+    {
+      array[y][x] = array [x][y];
+      if(x == y) { array[x][y] = z;}
+    }}
+    for( x = 0; x < 3; x++)
+    {
+      for(y = 0; y < 3; y++)
+      {
+        printf("%d ", array[x][y]);}
+        printf("\n");}
+}
 
+char* f06 (int start, int end, char *source)
+{
+  char *destiny = NULL;
+  int x = 0, y = 0;
+  destiny = malloc(strlen(source) * sizeof(char));
+  destiny[y] = '\0';
+
+  for(x = start; x < end; x++)
+  {
+    destiny[y] = source[x];
+    y++;
+  }
+  return destiny;
 }
 void method_06(void)
 {
- 
+  printf("1 = %s", f06(1,4, "abcde"));
+    printf("\n 2= %s", f06(4,6, "abcde"));
+      printf("\n3=%s", f06(0,3, "abcde"));
+        printf("\n4=%s", f06(3,5, "abcde"));
 }
 void method_07(void) 
 {
@@ -36,11 +88,20 @@ void method_07(void)
 }
 void method_08(void) 
 {
+
+    struct Squestao
+    {
+      int dia ;
+      int mes ;
+      int ano ;
+    } questao;
+    
     int dia, mes, ano = 0;
     int dia1, mes1, ano1 = 0;
     scanf("%d", &dia1);
     scanf("%d", &mes1);
     scanf("%d", &ano1);
+
     int aux;
     double boletos = 0.0;
     FILE* arquivo = fopen ("DATAS.TXT", "rt");
@@ -73,7 +134,7 @@ void method_08(void)
                 printf("ERRO no arquivo\n,");
             }
             else
-            {
+            {  
                 if(boletos == 0)
                 {
                     fprintf(arquivo1, "0\n");
@@ -89,7 +150,6 @@ void method_08(void)
         fclose(arquivo);
         fclose(arquivo1);
     }
-    
 }
 
 int main(int argc, char *argv[]) {

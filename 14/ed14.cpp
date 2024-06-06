@@ -42,7 +42,7 @@ void method_00 ( )
  */ 
 void method_01 ( ) 
 { 
-   MyString string ("ab.");
+   MyString string ("0000");
    cout << string.getInt () << endl;
 } // end method_01 ( ) 
  

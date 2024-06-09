@@ -234,7 +234,7 @@ public:
      @return quantidade de sequencias de caracteres identificadas, se houver; 
      zero, caso contrario 
     */ 
-    int split ( std::string sequencia [ ] )
+    int split ( std::string sequencia [] )
     {
 
     }
@@ -243,7 +243,6 @@ public:
     char* extra01 (char delimitador)
     {   
         int i = 0, count = 0;
-        char* aux;
         do
         {
             count++;
@@ -251,13 +250,15 @@ public:
         } while (str[i] != delimitador);
         // std::cout << count;
 
-        aux = new char [count + 1];
+        char* aux = new char [count + 1];
 
         for(int i = 0; i < count; i++)
         {
             aux[i] = str[i];
         }
+
         aux[count+1] = '\0';
-        return aux; 
+
+        return ( aux ); 
     }
 };

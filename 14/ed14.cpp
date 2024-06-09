@@ -42,7 +42,7 @@ void method_00 ( )
  */ 
 void method_01 ( ) 
 { 
-   MyString string ("0000");
+   MyString string ("00!.0.");
    cout << string.getInt () << endl;
 } // end method_01 ( ) 
  
@@ -51,7 +51,8 @@ void method_01 ( )
  */ 
 void method_02 ( ) 
 { 
-
+      MyString string ("0000");
+      cout << string.getDouble () << endl;
 } // end method_02 ( ) 
  
 /** 
@@ -75,7 +76,8 @@ void method_04 ( )
  */ 
 void method_05 ( ) 
 { 
-
+      MyString string ("abc0sdDAS123");
+      cout << string.toUpperCase() << endl;
 } // end method_05 ( ) 
  
 /** 
@@ -83,7 +85,8 @@ void method_05 ( )
  */ 
 void method_06 ( ) 
 { 
-
+      MyString string ("ABC#@123LmO31masc");
+      cout << string.toLowerCase() << endl;
 } // end method_06 ( ) 
  
 /** 
@@ -91,7 +94,8 @@ void method_06 ( )
  */ 
 void method_07 ( ) 
 { 
-
+      MyString string ("1010110101010100");
+      cout << string.replace('1', '4') << endl;
 } // end method_07 ( ) 
  
 /** 
@@ -99,7 +103,8 @@ void method_07 ( )
  */ 
 void method_08 ( ) 
 { 
-
+   MyString string ("HELLO XYZ WORLD");
+   cout << string.encrypt() << endl;
 } // end method_08 ( ) 
  
 /** 
@@ -107,7 +112,8 @@ void method_08 ( )
  */ 
 void method_09 ( ) 
 { 
-
+   MyString string ("KHOOR ABC ZRUOG");
+   cout << string.decrypt() << endl;
 } // end method_09 ( ) 
  
  
@@ -116,7 +122,8 @@ void method_09 ( )
  */ 
 void method_10 ( ) 
 { 
-
+   MyString string ("teste delim!tador");
+   cout << string.extra01('!') << endl;
 } // end method_10 ( ) 
  
 // ----------------------------------------------- acao principal 

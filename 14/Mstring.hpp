@@ -47,9 +47,10 @@ public:
     }
 
     /**
-     * Converter string para inteiro
-     */
-
+         Funcao para converter conteudo para valor inteiro, se possivel.
+         @return valor inteiro equivalente, se valido;
+                       (-1), caso contrario
+      */
     int getInt()
     {
         int x = 0;
@@ -88,6 +89,11 @@ public:
         return sum;
     }
 
+    /**
+         Funcao para converter conteudo para valor real, se possivel.
+         @return valor real equivalente, se valido;
+                       (0.0), caso contrario
+      */
     double getDouble()
     {
         double sum = 0.0;
@@ -151,6 +157,12 @@ public:
         }
     }
 
+    /**
+         Funcao para converter conteudo para valor lógico, se possivel.
+         Nota: Considerar válidos: { true, false, T, F, 0, 1 }
+         @return valor logico equivalente, se valido;
+                       false, caso contrario
+      */
     bool getBoolean()
     {
         bool result = false;
@@ -171,6 +183,11 @@ public:
         return (result);
     }
 
+    /**
+         Funcao para verificar se o parametro esta’ contido no conteudo.
+         @return true , se contiver (em qualquer posicao);
+                       false, caso contrario
+      */
     bool contains(std::string text)
     {
         bool r = false;
@@ -457,6 +474,5 @@ public:
         }
 
         return (erroMsg);
-
     }
 };

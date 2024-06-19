@@ -231,29 +231,36 @@ void method_08(void)
     FILE *arquivo3 = fopen("AUXILIAR.TXT", "wt");
     int x = 0;
 
-    while (!feof(arquivo1))
+    if (arquivo1 != NULL && arquivo2 != NULL && arquivo3 != NULL)
     {
-        fscanf(arquivo1, "%d", &x);
-        if (x % 2 != 0)
+        while (!feof(arquivo1))
         {
-            fprintf(arquivo2, "%d\n", x);
-        }
-        else
-        {
-            fprintf(arquivo3, "%d\n", x);
+            fscanf(arquivo1, "%d", &x);
+            if (x % 2 != 0)
+            {
+                fprintf(arquivo2, "%d\n", x);
+            }
+            else
+            {
+                fprintf(arquivo3, "%d\n", x);
+            }
         }
     }
     fclose(arquivo1);
     fclose(arquivo2);
     fclose(arquivo3);
+
     FILE *arquivo4 = fopen("RESULTADO.TXT", "a");
     FILE *arquivo5 = fopen("AUXILIAR.TXT", "rt");
 
-    fscanf(arquivo5, "%d", &x);
-    while (!feof(arquivo5))
+    if (arquivo4 != NULL && arquivo5 != NULL)
     {
-        fprintf(arquivo4, "%d\n", x);
         fscanf(arquivo5, "%d", &x);
+        while (!feof(arquivo5))
+        {
+            fprintf(arquivo4, "%d\n", x);
+            fscanf(arquivo5, "%d", &x);
+        }
     }
     fclose(arquivo4);
     fclose(arquivo5);

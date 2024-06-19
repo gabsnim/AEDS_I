@@ -10,7 +10,7 @@ int main(void)
     a = b;
     b = new intCell(2, a, null);
     a->right = b;
-    b->right = c;
+    // b->right = c;
 
     a->print();
     printf("\n");

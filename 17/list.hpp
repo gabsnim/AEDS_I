@@ -2,12 +2,11 @@
 
 #define null NULL
 
-
-class NODE 
+class NODE
 {
-    public:
+public:
     int data;
-    NODE* next;
+    NODE *next;
 
     NODE(int data)
     {
@@ -17,19 +16,18 @@ class NODE
 };
 class intCell
 {
-    public:
-    NODE* head;
-    NODE* current;
+public:
+    NODE *head;
+    NODE *current;
 
-    intCell ()
+    intCell()
     {
         head = null;
         current = null;
     }
 
-    intCell (intCell* head, intCell* current)
+    intCell(intCell *head, intCell *current)
     {
-
     }
 
     // ~intCell ()
@@ -38,14 +36,38 @@ class intCell
     //     {
     //         NODE* aux = head->next;
     //         delete aux;
-    //         current = aux;      
-    //     }       
+    //         current = aux;
+    //     }
     // }
 
-    intCell *push_back (intCell* cel, int x)
+    intCell *setNpilha(intCell *cel, int n)
     {
-        NODE *a = new NODE (x);
-        if(cel->head == null)
+        if (cel->head == nullptr)
+        {
+            NODE *a = new NODE(0);
+            cel->head = a;
+            cel->current = a;
+        }
+
+            for (int i = 1; i < n; i = i + 1)
+            {
+                NODE *b = new NODE(i);
+                //  std::cout << "aq1";
+                if (b != nullptr)
+                {
+                    // std::cout << "aq2";
+                    cel->current->next = b;
+                    cel->current = b;
+                }
+            }
+
+        return cel;
+    }
+
+    intCell *push_back(intCell *cel, int x)
+    {
+        NODE *a = new NODE(x);
+        if (cel->head == null)
         {
             cel->head = a;
             cel->current = a;
@@ -60,12 +82,12 @@ class intCell
 
     void print()
     {
-        NODE* temp = head;
-        while (temp != nullptr) {
+        NODE *temp = head;
+        while (temp != nullptr)
+        {
             std::cout << temp->data << " ";
             temp = temp->next;
         }
         std::cout << std::endl;
     }
-
 };

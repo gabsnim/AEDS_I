@@ -7,7 +7,7 @@ Matricula: 805347
 #include <iostream> // std::cin, std::cout, std:endl 
 #include <limits> // std::numeric_limits 
 #include <string> // para cadeias de caracteres 
-#include "list.hpp"
+#include <stdlib.h>
  
 // ----------------------------------------------- definicoes globais 
  
@@ -42,13 +42,16 @@ void method_00 ( )
  */ 
 void method_01 ( ) 
 { 
-   // intCell *list = new intCell();
-   // list = list->push_back(list, 5);
-   // list = list->push_back(list, 10);
-   // list->print();    
-   intCell *LIFO = new intCell();
-   LIFO = LIFO->setNpilha(LIFO, 5);
-   LIFO->print();
+    int array [] = {0,1,2,3,4,5};
+    for(int x : array)          //foreach
+    {
+        cout << x << endl;
+    }
+
+    for(auto x : array)         //foreach usando auto (variavel coringa que assume o primeiro valor que ela recebe)
+    {
+        cout << x << endl; 
+    }    
 } // end method_01 ( ) 
  
 /** 

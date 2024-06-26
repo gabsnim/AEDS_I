@@ -7,6 +7,7 @@ Matricula: 805347
 #include <iostream> // std::cin, std::cout, std:endl 
 #include <limits> // std::numeric_limits 
 #include <string> // para cadeias de caracteres 
+#include "list.hpp"
  
 // ----------------------------------------------- definicoes globais 
  
@@ -41,7 +42,10 @@ void method_00 ( )
  */ 
 void method_01 ( ) 
 { 
-        
+   intCell *list = new intCell();
+   list = list->push_back(list, 5);
+   list = list->push_back(list, 10);
+   list->print();    
 } // end method_01 ( ) 
  
 /** 

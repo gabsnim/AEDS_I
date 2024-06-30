@@ -42,13 +42,26 @@ void method_00 ( )
  */ 
 void method_01 ( ) 
 { 
-   // intCell *list = new intCell();
-   // list = list->push_back(list, 5);
-   // list = list->push_back(list, 10);
-   // list->print();    
    intCell *LIFO = new intCell();
-   LIFO = LIFO->setNpilha(LIFO, 5);
+   int n = 0, x = 0;
+
+   std::cout << "Digite quantos elementos voce deseja inserir: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      LIFO = LIFO->intStack_push(LIFO, x);
+   }
    LIFO->print();
+
+   std::cout << "Digite um elemento para ser inserido no final: " << std::endl;
+   std::cin >> x;
+   LIFO = LIFO->intStack_push(LIFO, x);
+   LIFO->print();
+   
+   
 } // end method_01 ( ) 
  
 /** 
@@ -56,7 +69,25 @@ void method_01 ( )
  */ 
 void method_02 ( ) 
 { 
+   intCell *LIFO = new intCell();
+   int n = 0, x = 0;
 
+   std::cout << "Digite quantos elementos voce deseja inserir: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      LIFO = LIFO->intStack_push(LIFO, x);
+   }
+   LIFO->print();
+
+   LIFO = LIFO->intStack_pop(LIFO);
+
+   std::cout << "Elemento retirado do final." << std::endl;
+   
+   LIFO->print();
 } // end method_02 ( ) 
  
 /** 
@@ -64,7 +95,25 @@ void method_02 ( )
  */ 
 void method_03 ( ) 
 { 
+   intCell *LIFO = new intCell();
+   int n = 0, x = 0;
 
+   std::cout << "Digite quantos elementos voce deseja inserir: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      LIFO = LIFO->intStack_push(LIFO, x);
+   }
+   LIFO->print();
+
+   LIFO = LIFO->intStack_dup(LIFO);
+
+   std::cout << "Elemento do final foi duplicado." << std::endl;
+   
+   LIFO->print();
 } // end method_03 ( ) 
  
 /** 
@@ -72,7 +121,25 @@ void method_03 ( )
  */ 
 void method_04 ( ) 
 { 
+   intCell *LIFO = new intCell();
+   int n = 0, x = 0;
 
+   std::cout << "Digite quantos elementos voce deseja inserir: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      LIFO = LIFO->intStack_push(LIFO, x);
+   }
+   LIFO->print();
+
+   LIFO = LIFO->intStack_swap(LIFO);
+
+   std::cout << "o ultimo elemento foi trocado com o penultimo." << std::endl;
+   
+   LIFO->print();
 } // end method_04 ( ) 
  
 /** 
@@ -80,7 +147,25 @@ void method_04 ( )
  */ 
 void method_05 ( ) 
 { 
+   intCell *LIFO = new intCell();
+   int n = 0, x = 0;
 
+   std::cout << "Digite quantos elementos voce deseja inserir: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      LIFO = LIFO->intStack_push(LIFO, x);
+   }
+   LIFO->print();
+
+   LIFO = LIFO->intStack_invert(LIFO);
+
+   std::cout << "os elementos foram trocados de ordem." << std::endl;
+   
+   LIFO->print();
 } // end method_05 ( ) 
  
 /** 

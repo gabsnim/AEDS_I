@@ -173,6 +173,21 @@ void method_05 ( )
  */ 
 void method_06 ( ) 
 { 
+   intCell *FIFO = new intCell();
+   int n = 0, x = 0;
+
+   std::cout << "Digite quantos elementos voce deseja inserir: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      FIFO = FIFO->intQueue_push(FIFO, x);
+   }
+   FIFO->print();
+
+   std::cout << "Digite um valor para ser inserido no final" << std::endl;
 
 } // end method_06 ( ) 
  
@@ -181,7 +196,25 @@ void method_06 ( )
  */ 
 void method_07 ( ) 
 { 
+   intCell *FIFO = new intCell();
+   int n = 0, x = 0;
 
+   std::cout << "Digite quantos elementos voce deseja inserir: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      FIFO = FIFO->intStack_push(FIFO, x);
+   }
+   FIFO->print();
+
+   FIFO = FIFO->intQueue_pop(FIFO);
+
+   std::cout << "Elemento retirado do comeco." << std::endl;
+   
+   FIFO->print();
 } // end method_07 ( ) 
  
 /** 
@@ -189,7 +222,37 @@ void method_07 ( )
  */ 
 void method_08 ( ) 
 { 
+   // intCell *FILA1 = new intCell();
+   // intCell *FILA2 = new intCell();
 
+   // int n = 0, x = 0;
+
+   // std::cout << "Digite quantos elementos voce deseja inserir na FILA1: " << std::endl;
+   // std::cin >> n;
+
+   // for(int i = 0; i < n; i++)
+   // {
+   //    std::cout << "Digite o elemento " << i+1 << std::endl;
+   //    std::cin >> x;
+   //    FILA1 = FILA1->intStack_push(FILA1, x);
+   // }
+
+   // std::cout << "Digite quantos elementos voce deseja inserir na FILA2: " << std::endl;
+   // std::cin >> n;
+
+   // for(int i = 0; i < n; i++)
+   // {
+   //    std::cout << "Digite o elemento " << i+1 << std::endl;
+   //    std::cin >> x;
+   //    FILA2 = FILA2->intStack_push(FILA2, x);
+   // }
+
+   // int y = FILA1->intQueue_compare(FILA1, FILA2);
+
+   // std::cout << "Diferenca entre as duas filas = " << y << std::endl;
+
+   // FILA1->print();
+   // FILA2->print();
 } // end method_08 ( ) 
  
 /** 
@@ -197,7 +260,36 @@ void method_08 ( )
  */ 
 void method_09 ( ) 
 { 
+   intCell *FILA1 = new intCell();
+   intCell *FILA2 = new intCell();
 
+   int n = 0, x = 0;
+
+   std::cout << "Digite quantos elementos voce deseja inserir na FILA1: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      FILA1 = FILA1->intStack_push(FILA1, x);
+   }
+
+   std::cout << "Digite quantos elementos voce deseja inserir na FILA2: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      FILA2 = FILA2->intStack_push(FILA2, x);
+   }
+
+   FILA1 = FILA1->intQueue_join(FILA1, FILA2);
+
+   std::cout << "Duas filas juntas: " << std::endl;
+
+   FILA1->print();
 } // end method_09 ( ) 
  
  
@@ -206,7 +298,38 @@ void method_09 ( )
  */ 
 void method_10 ( ) 
 { 
+   intCell *FILA = new intCell();
 
+   int n = 0, x = 0, y = 0;
+   int z = 0;
+
+   std::cout << "Digite quantos elementos voce deseja inserir na FILA: " << std::endl;
+   std::cin >> n;
+
+   for(int i = 0; i < n; i++)
+   {
+      std::cout << "Digite o elemento " << i+1 << std::endl;
+      std::cin >> x;
+      FILA = FILA->intStack_push(FILA, x);
+   }
+
+   FILA->print();
+
+   std::cout << "Digite o elemento que voce deseja procurar na FILA: " << std::endl;
+   std::cin >> y;
+
+   z = FILA->intQueue_search(FILA, y);
+
+   if(z == 0)
+   {
+      std::cout << "O elemento nao foi encontrado na FILA: " << std::endl;
+      FILA->print();
+   }
+   else
+   {
+      std::cout << "O elemento foi encontrado na FILA: " << std::endl;
+      FILA->print();
+   }
 } // end method_10 ( ) 
  
 // ----------------------------------------------- acao principal 
@@ -224,7 +347,7 @@ int main ( int argc, char** argv )
     do 
     { 
      // identificar 
-        cout << "EXEMPLO1101 - Programa - v0.0\n    " << endl; 
+        cout << "Estudo dirigido 17 - Gabriel Xavier\n    " << endl; 
  
      // mostrar opcoes 
         cout << "Opcoes      " << endl; 

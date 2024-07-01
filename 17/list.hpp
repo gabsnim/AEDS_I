@@ -165,9 +165,107 @@ public:
             NODE *tmp2 = new NODE(cel->current->data);
             aux->intStack_push(aux, tmp2->data);
         }
-        
+
         return aux;
-        
+    }
+
+    intCell *intQueue_push(intCell *cel, int x)
+    {
+        /**
+         * Inserir no final
+         */
+
+        // NODE *tmp = new NODE(x);
+        // if(cel->head == nullptr)
+        // {
+        //     cel->head = tmp;
+        //     cel->current = tmp;
+        // }
+        // else
+        // {
+        //     cel->current->next = tmp;
+        //     cel->current = tmp;
+        // }
+
+        // return cel;
+
+        /**
+         * Inserir no inicio
+         */
+
+        NODE *newNODE = new NODE (x);
+        if(cel == nullptr)
+        {
+            cel->head = newNODE;
+        }
+        else
+        {
+            NODE *tmp = cel->head;
+            while (tmp->next != nullptr)
+            {
+                tmp = tmp->next;
+            }
+            tmp->next = newNODE;
+        }
+        return cel;
+    }
+
+    intCell *intQueue_pop(intCell *cel)
+    {
+        if (cel->head == nullptr)
+        {
+            return nullptr;
+        }
+
+        if (cel->head == nullptr)
+        {
+            return nullptr;
+        }
+
+        cel->head = cel->head->next;
+
+        // delete cel->head;
+
+        return cel;
+    }
+
+    // int intQueue_compare(intCell *aux1, intCell *aux2)
+    // {
+    //     NODE *tmp1 = new NODE(aux1->head->data);
+    //     NODE *tmp2 = new NODE(aux2->head->data);
+    // }
+
+    intCell *intQueue_join(intCell *aux1, intCell *aux2)
+    {
+        if (aux1->head == nullptr)
+        {
+            aux1->head = aux2->head;
+            aux1->current = aux2->current;
+        }
+        else
+        {
+            aux1->current->next = aux2->head;
+            aux1->current = aux2->current;
+        }
+        return aux1;
+    }
+
+    int intQueue_search(intCell *cel, int x)
+    {
+        int n = 0;
+
+        NODE *current = cel->head;
+
+        while (current != nullptr)
+        {
+            if (current->data == x)
+            {
+                n = 1;
+            }
+            current = current->next;
+        }
+
+        return n;
     }
 
     void print()

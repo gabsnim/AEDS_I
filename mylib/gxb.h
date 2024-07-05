@@ -7,6 +7,10 @@
 
 typedef char *chars;
 
+/**
+ * Minha biblioteca criada para auxilio nos exercicios
+ */
+
 /*
   Funcao para ler um inteiro
   @param texto a ser imprimido na hora da leitura

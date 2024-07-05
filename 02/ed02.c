@@ -1,7 +1,7 @@
 /*
 Aluno: Gabriel Xavier Borges
 Matricula: 805347
-
+atividade finalizada
 */
 
 #include "gxb.h"

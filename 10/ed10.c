@@ -1,11 +1,13 @@
-#include "gxb.h"
-#include "structArray.h"
-#include "structMatrix.h"
 
 /*
 Aluno: Gabriel Xavier Borges
 Matricula: 805347
+atividade finalizada
 */
+
+#include "gxb.h"
+#include "structArray.h"
+#include "structMatrix.h"
 
 
 void method_01(void) 

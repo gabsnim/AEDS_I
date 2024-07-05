@@ -287,7 +287,7 @@ void method_09 ( )
 
    FILA1 = FILA1->intQueue_join(FILA1, FILA2);
 
-   std::cout << "Duas filas juntas: " << std::endl;
+   std::cout << "Duas filas juntas:" << std::endl;
 
    FILA1->print();
 } // end method_09 ( ) 

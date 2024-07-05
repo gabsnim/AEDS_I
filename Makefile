@@ -18,5 +18,4 @@ default:
 	@echo "---"
 	cat $(RESULT)
 	diff $(OUTPUT) $(RESULT)
-
-    
+	
